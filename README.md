@@ -1,36 +1,247 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tri Do Portfolio
+
+A personal software developer portfolio built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
+
+This portfolio is designed around the concept of **Skills in Action**. Instead of only listing technical skills, each skill connects directly to the projects where it was used.
+
+## Live Demo
+
+Portfolio: Coming soon  
+GitHub: https://github.com/dominhtri055
+
+## About
+
+I am Tri Do, a recent Software Development graduate based in Moncton, NB. I focus on full-stack development, backend APIs, mobile applications, and database-driven projects.
+
+This portfolio highlights my practical development experience through real projects, including backend APIs, mobile applications, frontend JavaScript apps, and web applications.
+
+## Features
+
+- Modern dark purple theme
+- Interactive skill filtering
+- Skills connected to related projects
+- Project evidence cards
+- Work experience section
+- Resume download button
+- Responsive layout for desktop and mobile
+- Personal favicon/logo
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- HTML
+- CSS
+- JavaScript
+
+## Main Concept
+
+The main idea of this portfolio is:
+
+```text
+Skill → Project Evidence
+```
+
+For example:
+
+- **Express.js** connects to the License Plate Assignment API
+- **MongoDB** connects to backend database projects
+- **React Native** connects to ShopPilot Mobile App
+- **Spring Boot** connects to Restaurant Event Management App
+- **JavaScript** connects to Tax Calculator App
+
+This helps recruiters see not only what technologies I know, but also how I used them in real projects.
+
+## Featured Projects
+
+### License Plate Assignment API
+
+A backend REST API for generating, assigning, verifying, and revoking Ontario-style license plates based on valid VIN numbers.
+
+**Tech used:**
+
+- Node.js
+- Express.js
+- TypeScript
+- MongoDB
+- Mongoose
+- REST API
+- API key authentication
+- Postman
+
+**Repository:**  
+https://github.com/dominhtri055/COMP9784-87486-Final-Project
+
+---
+
+### ShopPilot Mobile App
+
+A mobile app built with React Native and Expo Router, including session checking, login redirect flow, and dashboard navigation.
+
+**Tech used:**
+
+- React Native
+- Expo
+- Expo Router
+- TypeScript
+- AsyncStorage
+- Mobile UI
+
+**Repository:**  
+https://github.com/dominhtri055/shoppilot-mobile
+
+---
+
+### Restaurant Event Management App
+
+A Spring Boot web application for managing restaurant events with CRUD operations, validation, search filters, and archive logic.
+
+**Tech used:**
+
+- Java
+- Spring Boot
+- MySQL
+- Thymeleaf
+- MVC
+- CRUD
+- Validation
+
+**Repository:**  
+https://github.com/dominhtri055/restaurant-event-app
+
+---
+
+### Tax Calculator App
+
+A frontend JavaScript app that calculates federal and provincial taxes based on user income.
+
+**Tech used:**
+
+- HTML
+- CSS
+- JavaScript
+- DOM Manipulation
+- Forms
+- Validation
+- Fetch API
+
+**Repository:**  
+https://github.com/dominhtri055/tax-calculator
+
+---
+
+### Local Business Website Demo
+
+A planned WordPress and SEO-focused website demo for local business use cases.
+
+**Tech used:**
+
+- WordPress
+- SEO
+- HTML
+- CSS
+- Responsive Design
+- Figma
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/dominhtri055/tri-portfolio.git
+cd tri-portfolio
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the project in your browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build for Production
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Then run the production server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```text
+tri-portfolio/
+├── app/
+│   ├── api/
+│   │   └── resume/
+│   │       └── route.ts
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── public/
+│   └── resume.pdf
+├── README.md
+├── package.json
+├── postcss.config.mjs
+├── next.config.ts
+└── tsconfig.json
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Resume Download
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The portfolio includes a resume download button.
+
+The resume file should be placed at:
+
+```text
+public/resume.pdf
+```
+
+If using the API download route, the resume is served from:
+
+```text
+/app/api/resume/route.ts
+```
+
+## Deployment
+
+This project is intended to be deployed on **Vercel**.
+
+After pushing to GitHub:
+
+1. Go to Vercel
+2. Import the GitHub repository
+3. Select Next.js as the framework
+4. Deploy
+
+Every push to the main branch will automatically trigger a new deployment.
+
+## Contact
+
+**Tri Do**
+
+- GitHub: https://github.com/dominhtri055
+- LinkedIn: https://www.linkedin.com/in/trido2908/
+- Email: dominhtri055@gmail.com
+
+## License
+
+This project is for personal portfolio use.
