@@ -146,6 +146,33 @@ const projects: Project[] = [
       "Business-focused landing page",
     ],
   },
+  {
+  id: "schedule-book",
+  title: "Schedule Book",
+  subtitle: "Booking / Scheduling Web App",
+  description:
+    "A web application for managing appointments, schedules, and booking records through a clean user interface.",
+  status: "Completed",
+  skills: [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Responsive Design",
+    "Forms",
+    "Validation",
+    "CRUD",
+    "Web Deployment",
+  ],
+  features: [
+    "Appointment scheduling",
+    "Booking form",
+    "Schedule management",
+    "Responsive layout",
+    "Form validation",
+    "Live web deployment",
+  ],
+  demo: "https://schedulebooker-web.onrender.com/",
+},
 ];
 
 const skillGroups = [
