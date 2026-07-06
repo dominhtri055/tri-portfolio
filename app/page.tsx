@@ -147,32 +147,32 @@ const projects: Project[] = [
     ],
   },
   {
-  id: "schedule-book",
-  title: "Schedule Book",
-  subtitle: "Booking / Scheduling Web App",
-  description:
-    "A web application for managing appointments, schedules, and booking records through a clean user interface.",
-  status: "Completed",
-  skills: [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "Responsive Design",
-    "Forms",
-    "Validation",
-    "CRUD",
-    "Web Deployment",
-  ],
-  features: [
-    "Appointment scheduling",
-    "Booking form",
-    "Schedule management",
-    "Responsive layout",
-    "Form validation",
-    "Live web deployment",
-  ],
-  demo: "https://schedulebooker-web.onrender.com/",
-},
+    id: "schedule-book",
+    title: "Schedule Book",
+    subtitle: "Booking / Scheduling Web App",
+    description:
+      "A web application for managing appointments, schedules, and booking records through a clean user interface.",
+    status: "Completed",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Responsive Design",
+      "Forms",
+      "Validation",
+      "CRUD",
+      "Web Deployment",
+    ],
+    features: [
+      "Appointment scheduling",
+      "Booking form",
+      "Schedule management",
+      "Responsive layout",
+      "Form validation",
+      "Live web deployment",
+    ],
+    demo: "https://schedulebooker-web.onrender.com/",
+  },
 ];
 
 const skillGroups = [
@@ -221,28 +221,15 @@ const skillGroups = [
 ];
 
 export default function HomePage() {
-  const [selectedSkill, setSelectedSkill] = useState<string>("All");
-
-  const allSkills = useMemo(() => {
-    const skills = new Set<string>();
-
-    projects.forEach((project) => {
-      project.skills.forEach((skill) => skills.add(skill));
-    });
-
-    return ["All", ...Array.from(skills).sort()];
-  }, []);
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
 
   const filteredProjects = useMemo(() => {
-    if (selectedSkill === "All") return projects;
+    if (!selectedSkill) return projects;
 
     return projects.filter((project) => project.skills.includes(selectedSkill));
   }, [selectedSkill]);
 
-  const selectedSkillProjects =
-    selectedSkill === "All"
-      ? projects
-      : projects.filter((project) => project.skills.includes(selectedSkill));
+  const selectedSkillProjects = filteredProjects;
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 text-slate-100">
@@ -338,25 +325,19 @@ export default function HomePage() {
           <div className="rounded-2xl border border-purple-500/30 bg-purple-950/30 px-5 py-4">
             <p className="text-sm text-slate-400">Selected skill</p>
             <p className="text-xl font-bold text-purple-300">
-              {selectedSkill}
+              {selectedSkill ?? "None"}
             </p>
-          </div>
-        </div>
 
-        <div className="mb-10 flex flex-wrap gap-3">
-          {allSkills.map((skill) => (
-            <button
-              key={skill}
-              onClick={() => setSelectedSkill(skill)}
-              className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-                selectedSkill === skill
-                  ? "border-purple-400 bg-purple-600 text-white"
-                  : "border-slate-700 bg-slate-900 text-slate-300 hover:border-purple-400 hover:text-purple-300"
-              }`}
-            >
-              {skill}
-            </button>
-          ))}
+            {selectedSkill && (
+              <button
+                type="button"
+                onClick={() => setSelectedSkill(null)}
+                className="mt-3 text-sm font-semibold text-slate-300 transition hover:text-purple-300"
+              >
+                Show all projects
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -388,8 +369,14 @@ export default function HomePage() {
 
         <div className="mt-12 rounded-3xl border border-purple-500/30 bg-slate-900/80 p-6">
           <h3 className="text-2xl font-bold">
-            Projects using{" "}
-            <span className="text-purple-300">{selectedSkill}</span>
+            {!selectedSkill ? (
+              "All my projects"
+            ) : (
+              <>
+                Projects using{" "}
+                <span className="text-purple-300">{selectedSkill}</span>
+              </>
+            )}
           </h3>
 
           <div className="mt-6 grid gap-5 md:grid-cols-2">
@@ -567,7 +554,7 @@ function ProjectCard({
   onSkillClick,
 }: {
   project: Project;
-  selectedSkill: string;
+  selectedSkill: string | null;
   onSkillClick: (skill: string) => void;
 }) {
   return (
