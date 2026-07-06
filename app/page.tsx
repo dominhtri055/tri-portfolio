@@ -283,17 +283,6 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-
-        <div className="rounded-3xl border border-fuchsia-300/20 bg-slate-950/45 p-6 shadow-[0_0_35px_rgba(168,85,247,0.18)] backdrop-blur">
-          <p className="text-sm text-slate-400">Portfolio concept</p>
-          <h2 className="mt-2 text-2xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.25)]">
-            Skills in Action
-          </h2>
-          <p className="mt-4 max-w-sm text-slate-300">
-            Every technical skill links directly to projects where I used it.
-            Recruiters can see not only what I know, but what I have built.
-          </p>
-        </div>
       </section>
 
       <section
@@ -487,8 +476,7 @@ export default function HomePage() {
       )}
 
       <footer className="px-5 py-8 text-center text-sm text-slate-500">
-        © {new Date().getFullYear()} Tri Do. Built with Next.js, TypeScript, and
-        Tailwind CSS.
+        © {new Date().getFullYear()} Tri Do.
       </footer>
     </main>
   );
