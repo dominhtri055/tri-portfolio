@@ -263,7 +263,7 @@ export default function HomePage() {
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
             Recent Software Development graduate based in Moncton, NB, focused
             on full-stack development, backend APIs, mobile applications, and
-            practical project-based learning.
+            practical project-based learning
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -302,7 +302,7 @@ export default function HomePage() {
 
             <div className="mt-5">
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
-                Software Developer
+                Web & Mobile Developer
               </p>
 
               <h2 className="mt-2 text-2xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.25)]">
@@ -310,8 +310,9 @@ export default function HomePage() {
               </h2>
 
               <p className="mt-3 text-sm leading-6 text-slate-300">
-                Recent Software Development graduate focused on full-stack
-                development, backend APIs, and practical web applications.
+                Recent Software Development graduate based in Moncton, NB,
+                focused on web and mobile application development, with hands-on
+                experience building backend APIs and database-driven projects.
               </p>
             </div>
           </div>
