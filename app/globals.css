@@ -3,7 +3,6 @@
 * {
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
   background: #050816;
@@ -17,7 +16,6 @@ body {
     linear-gradient(180deg, #070918 0%, #16072f 48%, #050816 100%);
   color: #f8fafc;
 }
-
 ::selection {
   background: #a855f7;
   color: #020617;

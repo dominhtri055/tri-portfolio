@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
 type Project = {
@@ -246,7 +247,7 @@ export default function HomePage() {
     <main className="min-h-screen overflow-x-hidden bg-[#050816] bg-[radial-gradient(circle_at_top_left,rgba(126,34,206,0.58)_0%,transparent_34%),radial-gradient(circle_at_top_right,rgba(217,70,239,0.18)_0%,transparent_30%),linear-gradient(180deg,#070918_0%,#16072f_48%,#050816_100%)] text-slate-100">
       <Navbar />
 
-      <section className="mx-auto flex max-w-6xl flex-col gap-10 px-5 py-20 md:flex-row md:items-center md:justify-between">
+      <section className="mx-auto flex max-w-6xl flex-col gap-12 px-5 py-20 md:flex-row md:items-center md:justify-between">
         <div className="max-w-3xl">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
             Software Developer Portfolio
@@ -281,6 +282,38 @@ export default function HomePage() {
             >
               Download Resume
             </a>
+          </div>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-xs md:mx-0 md:max-w-sm">
+          <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-r from-purple-600 via-fuchsia-500 to-sky-500 opacity-60 blur-2xl" />
+
+          <div className="relative rounded-[2rem] border border-fuchsia-300/25 bg-slate-950/70 p-4 shadow-[0_0_45px_rgba(168,85,247,0.28)] backdrop-blur">
+            <div className="overflow-hidden rounded-[1.5rem] border border-fuchsia-300/20">
+              <Image
+                src="/profile.jpeg"
+                alt="Tri Do profile photo"
+                width={420}
+                height={520}
+                priority
+                className="h-[380px] w-full object-cover object-center"
+              />
+            </div>
+
+            <div className="mt-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
+                Software Developer
+              </p>
+
+              <h2 className="mt-2 text-2xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.25)]">
+                Tri Do
+              </h2>
+
+              <p className="mt-3 text-sm leading-6 text-slate-300">
+                Recent Software Development graduate focused on full-stack
+                development, backend APIs, and practical web applications.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -415,9 +448,15 @@ export default function HomePage() {
           </div>
 
           <ul className="mt-6 list-inside list-disc space-y-3 text-slate-300">
-            <li>Worked on backend features and server-side application logic.</li>
-            <li>Built and supported CRUD functionality for web applications.</li>
-            <li>Collaborated with supervisor and team members on assigned tasks.</li>
+            <li>
+              Worked on backend features and server-side application logic.
+            </li>
+            <li>
+              Built and supported CRUD functionality for web applications.
+            </li>
+            <li>
+              Collaborated with supervisor and team members on assigned tasks.
+            </li>
             <li>Practiced API, database, and backend development workflow.</li>
           </ul>
         </div>
@@ -442,7 +481,10 @@ export default function HomePage() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <a href="mailto:dominhtri055@gmail.com" className={primaryButtonClass}>
+              <a
+                href="mailto:dominhtri055@gmail.com"
+                className={primaryButtonClass}
+              >
                 Email Me
               </a>
 
