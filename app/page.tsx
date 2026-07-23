@@ -255,7 +255,7 @@ export default function HomePage() {
   }, [selectedSkill]);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#050816] bg-[radial-gradient(circle_at_top_left,rgba(126,34,206,0.58)_0%,transparent_34%),radial-gradient(circle_at_top_right,rgba(217,70,239,0.18)_0%,transparent_30%),linear-gradient(180deg,#070918_0%,#16072f_48%,#050816_100%)] text-slate-100">
+   <main className="min-h-screen overflow-x-hidden bg-[#050816] bg-[radial-gradient(circle_at_20%_10%,rgba(88,28,135,0.62)_0%,transparent_32%),radial-gradient(circle_at_80%_20%,rgba(126,34,206,0.28)_0%,transparent_30%),radial-gradient(circle_at_50%_55%,rgba(59,7,100,0.34)_0%,transparent_42%),linear-gradient(180deg,#050816_0%,#120721_35%,#1e0b3d_62%,#050816_100%)] text-slate-100">
       <header className="fixed left-1/2 top-5 z-[99] flex w-[min(94%,980px)] -translate-x-1/2 items-center justify-between gap-4 rounded-2xl border border-fuchsia-300/20 bg-slate-950/80 px-3 py-2 shadow-[0_0_35px_rgba(168,85,247,0.25)] backdrop-blur-xl">
         <a
           href="#"
