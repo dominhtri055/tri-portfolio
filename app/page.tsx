@@ -1,6 +1,8 @@
 "use client";
-
-import Image from "next/image";
+import ProfileCard from "@/components/ProfileCard/ProfileCard";
+import SoftAurora from "@/components/SoftAurora/SoftAurora";
+import TrueFocus from "@/components/TrueFocus/TrueFocus";
+import GooeyNav from "@/components/GooeyNav/GooeyNav";
 import { useMemo, useState } from "react";
 
 type Project = {
@@ -233,6 +235,15 @@ const primaryButtonClass =
 const outlineButtonClass =
   "rounded-xl border border-fuchsia-300/25 bg-slate-950/40 px-5 py-3 font-semibold text-slate-100 transition hover:border-fuchsia-300 hover:text-fuchsia-200 hover:shadow-[0_0_18px_rgba(168,85,247,0.25)]";
 
+const navItems = [
+  { label: "Home", href: "#" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+  { label: "Resume", href: "/resume.pdf" },
+];
 export default function HomePage() {
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -245,80 +256,103 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#050816] bg-[radial-gradient(circle_at_top_left,rgba(126,34,206,0.58)_0%,transparent_34%),radial-gradient(circle_at_top_right,rgba(217,70,239,0.18)_0%,transparent_30%),linear-gradient(180deg,#070918_0%,#16072f_48%,#050816_100%)] text-slate-100">
-      <Navbar />
+      <header className="fixed left-1/2 top-5 z-[99] flex w-[min(94%,980px)] -translate-x-1/2 items-center justify-between gap-4 rounded-2xl border border-fuchsia-300/20 bg-slate-950/80 px-3 py-2 shadow-[0_0_35px_rgba(168,85,247,0.25)] backdrop-blur-xl">
+        <a
+          href="#"
+          className="hidden shrink-0 px-2 text-sm font-extrabold text-white drop-shadow-[0_0_10px_rgba(217,70,239,0.35)] sm:inline-flex"
+          aria-label="Go to top"
+        >
+          Tri Do
+        </a>
 
-      <section className="mx-auto flex max-w-6xl flex-col gap-12 px-5 py-20 md:flex-row md:items-center md:justify-between">
-        <div className="max-w-3xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
-            Software Developer Portfolio
-          </p>
-
-          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_0_18px_rgba(216,180,254,0.28)] md:text-6xl">
-            Hi, I&apos;m Tri Do.
-            <span className="block bg-gradient-to-r from-purple-200 via-fuchsia-200 to-sky-200 bg-clip-text text-transparent drop-shadow-[0_0_22px_rgba(168,85,247,0.4)]">
-              I build web, backend, and mobile projects.
-            </span>
-          </h1>
-
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-            Recent Software Development graduate based in Moncton, NB, focused
-            on full-stack development, backend APIs, mobile applications, and
-            practical project-based learning
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#skills" className={primaryButtonClass}>
-              View Skills
-            </a>
-
-            <a href="#projects" className={outlineButtonClass}>
-              View Projects
-            </a>
-
-            <a
-              href="/resume.pdf"
-              download="Tri-Do-Resume.pdf"
-              className={outlineButtonClass}
-            >
-              Download Resume
-            </a>
-          </div>
+        <div className="min-w-0 flex-1 overflow-hidden sm:flex sm:justify-end">
+          <GooeyNav
+            items={navItems}
+            particleCount={15}
+            particleDistances={[74, 12]}
+            particleR={92}
+            initialActiveIndex={0}
+            animationTime={560}
+            timeVariance={260}
+            colors={[1, 2, 3, 1, 2, 4, 3, 1]}
+          />
         </div>
+      </header>
 
-        <div className="relative mx-auto w-full max-w-xs md:mx-0 md:max-w-sm">
-          <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-r from-purple-600 via-fuchsia-500 to-sky-500 opacity-60 blur-2xl" />
+      <section className="relative isolate overflow-hidden px-5 pb-20 pt-32">
+        <SoftAurora
+          speed={0.35}
+          scale={1.35}
+          brightness={0.75}
+          color1="#a855f7"
+          color2="#e879f9"
+          noiseFrequency={2.2}
+          noiseAmplitude={0.75}
+          bandHeight={0.42}
+          bandSpread={0.85}
+          octaveDecay={0.16}
+          layerOffset={0.35}
+          colorSpeed={0.55}
+          enableMouseInteraction={true}
+          mouseInfluence={0.08}
+        />
 
-          <div className="relative rounded-[2rem] border border-fuchsia-300/25 bg-slate-950/70 p-4 shadow-[0_0_45px_rgba(168,85,247,0.28)] backdrop-blur">
-            <div className="overflow-hidden rounded-[1.5rem] border border-fuchsia-300/20">
-              <Image
-                src="/profile.jpeg"
-                alt="Tri Do profile photo"
-                width={420}
-                height={520}
-                priority
-                className="h-[380px] w-full object-cover object-center"
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.2),transparent_34%),linear-gradient(180deg,rgba(5,8,22,0.35)_0%,rgba(5,8,22,0.78)_100%)]" />
+
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-3xl">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
+              Web & Mobile Developer Portfolio
+            </p>
+
+            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_0_18px_rgba(216,180,254,0.28)] md:text-6xl">
+              Hi, I&apos;m Tri Do.
+            </h1>
+
+            <div className="mt-4 max-w-3xl">
+              <TrueFocus
+                sentence="I build web and mobile applications."
+                manualMode={false}
+                blurAmount={0}
+                borderColor="#e879f9"
+                glowColor="rgba(232, 121, 249, 0.68)"
+                animationDuration={0.45}
+                pauseBetweenAnimations={0.45}
+                className="focus-container--hero"
               />
             </div>
 
-            <div className="mt-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
-                Web & Mobile Developer
-              </p>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+              Recent Software Development graduate based in Moncton, NB, focused
+              on web and mobile application development, with hands-on
+              experience building backend APIs and database-driven projects.
+            </p>
+          </div>
 
-              <h2 className="mt-2 text-2xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.25)]">
-                Tri Do
-              </h2>
-
-              <p className="mt-3 text-sm leading-6 text-slate-300">
-                Recent Software Development graduate based in Moncton, NB,
-                focused on web and mobile application development, with hands-on
-                experience building backend APIs and database-driven projects.
-              </p>
-            </div>
+          <div className="relative mx-auto flex w-full max-w-sm justify-center md:mx-0">
+            <ProfileCard
+              name="Tri Do"
+              title="Web & Mobile Developer"
+              handle="trido2908"
+              status="Open to Work"
+              contactText="Contact"
+              avatarUrl="/profile.jpeg"
+              miniAvatarUrl="/profile.jpeg"
+              showUserInfo={true}
+              enableTilt={true}
+              enableMobileTilt={false}
+              onContactClick={() => {
+                window.location.href = "mailto:dominhtri055@gmail.com";
+              }}
+              behindGlowEnabled={true}
+              behindGlowColor="rgba(217, 70, 239, 0.55)"
+              behindGlowSize="55%"
+              className="portfolio-profile-card"
+              innerGradient="linear-gradient(160deg, rgba(18,18,30,0.95) 0%, rgba(88,28,135,0.55) 50%, rgba(15,23,42,0.92) 100%)"
+            />
           </div>
         </div>
       </section>
-
       <section
         id="about"
         className="border-y border-fuchsia-300/10 bg-slate-950/25 backdrop-blur"
@@ -522,39 +556,6 @@ export default function HomePage() {
         © {new Date().getFullYear()} Tri Do.
       </footer>
     </main>
-  );
-}
-
-function Navbar() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-fuchsia-300/15 bg-slate-950/75 shadow-[0_0_25px_rgba(88,28,135,0.35)] backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <a href="#" className="text-lg font-bold text-white">
-          Tri
-          <span className="text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.45)]">
-            Do
-          </span>
-        </a>
-
-        <div className="hidden gap-6 text-sm text-slate-300 md:flex">
-          <a href="#about" className="transition hover:text-fuchsia-200">
-            About
-          </a>
-          <a href="#skills" className="transition hover:text-fuchsia-200">
-            Skills
-          </a>
-          <a href="#projects" className="transition hover:text-fuchsia-200">
-            Projects
-          </a>
-          <a href="#experience" className="transition hover:text-fuchsia-200">
-            Experience
-          </a>
-          <a href="#contact" className="transition hover:text-fuchsia-200">
-            Contact
-          </a>
-        </div>
-      </nav>
-    </header>
   );
 }
 
