@@ -1,4 +1,5 @@
 "use client";
+
 import ProfileCard from "@/components/ProfileCard/ProfileCard";
 import SoftAurora from "@/components/SoftAurora/SoftAurora";
 import TrueFocus from "@/components/TrueFocus/TrueFocus";
@@ -18,6 +19,116 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    id: "portfolio-website",
+    title: "Personal Portfolio Website",
+    subtitle: "Next.js / React Developer Portfolio",
+    description:
+      "A responsive personal portfolio built to showcase my web, mobile, and backend projects with animated navigation, skill filtering, project details, and a modern visual design.",
+    status: "Completed",
+    skills: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Responsive Design",
+      "Component Design",
+      "UI Design",
+      "Git",
+    ],
+    features: [
+      "Animated navigation",
+      "Interactive multi-skill project filtering",
+      "Accordion skill groups",
+      "Project detail popup modal",
+      "Responsive layout",
+      "Profile card integration",
+      "Resume download and contact links",
+    ],
+    github: "https://github.com/dominhtri055/Profolio",
+    demo: "https://tri-portfolio-pi.vercel.app",
+  },
+  {
+    id: "shoppilot-mobile",
+    title: "ShopPilot Mobile App",
+    subtitle: "React Native Mobile App",
+    description:
+      "A mobile app built with React Native and Expo Router, including session checking, login redirect flow, dashboard navigation, and mobile-first screen structure.",
+    status: "Completed",
+    skills: [
+      "React Native",
+      "Expo",
+      "Expo Router",
+      "TypeScript",
+      "AsyncStorage",
+      "Mobile UI",
+      "Authentication",
+      "Git",
+    ],
+    features: [
+      "Session checking",
+      "Login and dashboard redirect",
+      "Reusable screen structure",
+      "AsyncStorage session persistence",
+      "Mobile-first UI",
+      "Expo Router navigation",
+    ],
+    github: "https://github.com/dominhtri055/shoppilot-mobile",
+    demo: "https://shoppilot-mobile.vercel.app/login",
+  },
+  {
+    id: "schedule-booker",
+    title: "ScheduleBooker",
+    subtitle: "Booking / Scheduling Web App",
+    description:
+      "A web application for managing appointments, bookings, services, and customer scheduling through a clean responsive interface.",
+    status: "Completed",
+    skills: [
+      "Python",
+      "Flask",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Forms",
+      "Validation",
+      "CRUD",
+      "REST API",
+      "Web Deployment",
+    ],
+    features: [
+      "Appointment scheduling",
+      "Public booking flow",
+      "Booking form validation",
+      "Customer booking lookup",
+      "Service management",
+      "Responsive layout",
+      "Live Render deployment",
+    ],
+    demo: "https://schedulebooker-web.onrender.com/",
+  },
+  {
+    id: "hiretrack-android",
+    title: "HireTrack Android App",
+    subtitle: "Kotlin / Android Job Tracker",
+    description:
+      "An Android application concept for tracking job applications, statuses, and interview progress using a mobile-first interface.",
+    status: "In Progress",
+    skills: [
+      "Kotlin",
+      "Android",
+      "Jetpack Compose",
+      "Mobile UI",
+      "State Management",
+      "Git",
+    ],
+    features: [
+      "Job application tracking",
+      "Application status management",
+      "Mobile-first UI layout",
+      "Reusable Compose components",
+      "Job search workflow organization",
+    ],
+  },
   {
     id: "license-plate-api",
     title: "License Plate Assignment API",
@@ -46,31 +157,6 @@ const projects: Project[] = [
       "Error handling",
     ],
     github: "https://github.com/dominhtri055/COMP9784-87486-Final-Project",
-  },
-  {
-    id: "shoppilot-mobile",
-    title: "ShopPilot Mobile App",
-    subtitle: "React Native Mobile App",
-    description:
-      "A mobile app built with React Native and Expo Router, including session checking, login redirect flow, and dashboard navigation.",
-    status: "In Progress",
-    skills: [
-      "React Native",
-      "Expo",
-      "Expo Router",
-      "TypeScript",
-      "AsyncStorage",
-      "Mobile UI",
-      "Git",
-    ],
-    features: [
-      "Session checking",
-      "Login and dashboard redirect",
-      "Reusable screen structure",
-      "AsyncStorage session persistence",
-      "Mobile-first UI",
-    ],
-    github: "https://github.com/dominhtri055/shoppilot-mobile",
   },
   {
     id: "restaurant-event-app",
@@ -129,7 +215,7 @@ const projects: Project[] = [
     title: "Local Business Website Demo",
     subtitle: "WordPress / SEO Project",
     description:
-      "A responsive local business website demo designed for WordPress and SEO-focused web developer job applications.",
+      "A responsive local business website demo planned for WordPress and SEO-focused web developer job applications.",
     status: "Planned",
     skills: [
       "WordPress",
@@ -149,61 +235,25 @@ const projects: Project[] = [
       "Business-focused landing page",
     ],
   },
-  {
-    id: "schedule-book",
-    title: "Schedule Book",
-    subtitle: "Booking / Scheduling Web App",
-    description:
-      "A web application for managing appointments, schedules, and booking records through a clean user interface.",
-    status: "Completed",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Responsive Design",
-      "Forms",
-      "Validation",
-      "CRUD",
-      "Web Deployment",
-    ],
-    features: [
-      "Appointment scheduling",
-      "Booking form",
-      "Schedule management",
-      "Responsive layout",
-      "Form validation",
-      "Live web deployment",
-    ],
-    demo: "https://schedulebooker-web.onrender.com/",
-  },
 ];
 
 const skillGroups = [
-  {
-    title: "Backend",
-    skills: [
-      "Node.js",
-      "Express.js",
-      "TypeScript",
-      "MongoDB",
-      "Mongoose",
-      "REST API",
-      "Authentication",
-      "Java",
-      "Spring Boot",
-      "MySQL",
-    ],
-  },
   {
     title: "Frontend",
     skills: [
       "HTML",
       "CSS",
       "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
       "DOM Manipulation",
       "Forms",
       "Fetch API",
       "Responsive Design",
+      "Component Design",
+      "UI Design",
       "Thymeleaf",
     ],
   },
@@ -214,12 +264,42 @@ const skillGroups = [
       "Expo",
       "Expo Router",
       "AsyncStorage",
+      "Kotlin",
+      "Android",
+      "Jetpack Compose",
       "Mobile UI",
+      "State Management",
+    ],
+  },
+  {
+    title: "Backend",
+    skills: [
+      "Node.js",
+      "Express.js",
+      "Python",
+      "Flask",
+      "Java",
+      "Spring Boot",
+      "MongoDB",
+      "Mongoose",
+      "MySQL",
+      "REST API",
+      "Authentication",
+      "Validation",
+      "CRUD",
+      "MVC",
     ],
   },
   {
     title: "Tools / Workflow",
-    skills: ["Git", "Postman", "Validation", "MVC", "CRUD", "SEO", "Figma"],
+    skills: [
+      "Git",
+      "Postman",
+      "Web Deployment",
+      "SEO",
+      "Figma",
+      "Content Structure",
+    ],
   },
 ];
 
@@ -244,18 +324,40 @@ const navItems = [
   { label: "Contact", href: "#contact" },
   { label: "Resume", href: "/resume.pdf" },
 ];
+
 export default function HomePage() {
-  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [openSkillGroup, setOpenSkillGroup] = useState<string | null>(null);
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("All");
+
+  const toggleSkill = (skill: string) => {
+    setSelectedSkills((currentSkills) =>
+      currentSkills.includes(skill)
+        ? currentSkills.filter((item) => item !== skill)
+        : [...currentSkills, skill],
+    );
+  };
+
+  const clearSelectedSkills = () => {
+    setSelectedSkills([]);
+  };
 
   const filteredProjects = useMemo(() => {
-    if (!selectedSkill) return projects;
+    return projects.filter((project) => {
+      const matchesSkills =
+        selectedSkills.length === 0 ||
+        selectedSkills.every((skill) => project.skills.includes(skill));
 
-    return projects.filter((project) => project.skills.includes(selectedSkill));
-  }, [selectedSkill]);
+      const matchesStatus =
+        statusFilter === "All" || project.status === statusFilter;
+
+      return matchesSkills && matchesStatus;
+    });
+  }, [selectedSkills, statusFilter]);
 
   return (
-   <main className="min-h-screen overflow-x-hidden bg-[#050816] bg-[radial-gradient(circle_at_20%_10%,rgba(88,28,135,0.62)_0%,transparent_32%),radial-gradient(circle_at_80%_20%,rgba(126,34,206,0.28)_0%,transparent_30%),radial-gradient(circle_at_50%_55%,rgba(59,7,100,0.34)_0%,transparent_42%),linear-gradient(180deg,#050816_0%,#120721_35%,#1e0b3d_62%,#050816_100%)] text-slate-100">
+    <main className="min-h-screen overflow-x-hidden bg-[#050816] bg-[radial-gradient(circle_at_20%_10%,rgba(88,28,135,0.62)_0%,transparent_32%),radial-gradient(circle_at_80%_20%,rgba(126,34,206,0.28)_0%,transparent_30%),radial-gradient(circle_at_50%_55%,rgba(59,7,100,0.34)_0%,transparent_42%),linear-gradient(180deg,#050816_0%,#120721_35%,#1e0b3d_62%,#050816_100%)] text-slate-100">
       <header className="fixed left-1/2 top-5 z-[99] flex w-[min(94%,980px)] -translate-x-1/2 items-center justify-between gap-4 rounded-2xl border border-fuchsia-300/20 bg-slate-950/80 px-3 py-2 shadow-[0_0_35px_rgba(168,85,247,0.25)] backdrop-blur-xl">
         <a
           href="#"
@@ -353,6 +455,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
       <section
         id="about"
         className="border-y border-fuchsia-300/10 bg-slate-950/25 backdrop-blur"
@@ -368,100 +471,14 @@ export default function HomePage() {
           <div className="md:col-span-2">
             <p className="text-lg leading-8 text-slate-300">
               I am a recent Software Development graduate with hands-on
-              experience building backend APIs, full-stack web applications,
-              mobile apps, and database-driven projects. During my backend
-              internship at Beetech Solution LTD, I worked on server-side
-              features, CRUD functionality, and application logic.
+              experience building web applications, mobile apps, backend APIs,
+              and database-driven projects. During my backend internship at
+              Beetech Solution LTD, I worked on server-side features, CRUD
+              functionality, and application logic.
             </p>
           </div>
         </div>
       </section>
-
-      <section id="skills" className="mx-auto max-w-6xl px-5 py-16">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className={labelClass}>Skills</p>
-            <h2 className="mt-3 text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.2)]">
-              Skills in Action
-            </h2>
-            <p className="mt-3 max-w-2xl text-slate-400">
-              Click a skill to see which projects prove that skill.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-fuchsia-300/20 bg-slate-950/50 px-5 py-4 shadow-[0_0_25px_rgba(168,85,247,0.12)] backdrop-blur">
-            <p className="text-sm text-slate-400">Selected skill</p>
-            <p className="text-xl font-bold text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
-              {selectedSkill ?? "None"}
-            </p>
-
-            {selectedSkill && (
-              <button
-                type="button"
-                onClick={() => setSelectedSkill(null)}
-                className="mt-3 text-sm font-semibold text-slate-300 transition hover:text-fuchsia-200"
-              >
-                Show all projects
-              </button>
-            )}
-          </div>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {skillGroups.map((group) => (
-            <div key={group.title} className={cardClass}>
-              <h3 className="text-xl font-bold text-white drop-shadow-[0_0_10px_rgba(216,180,254,0.2)]">
-                {group.title}
-              </h3>
-
-              <div className="mt-5 flex flex-wrap gap-3">
-                {group.skills.map((skill) => (
-                  <button
-                    key={skill}
-                    onClick={() => setSelectedSkill(skill)}
-                    className={`rounded-full border px-3 py-2 text-sm font-medium transition ${
-                      selectedSkill === skill
-                        ? "border-fuchsia-300 bg-purple-600 text-white shadow-[0_0_18px_rgba(168,85,247,0.55)]"
-                        : "border-fuchsia-300/15 bg-slate-950/65 text-slate-300 hover:border-fuchsia-300 hover:text-fuchsia-200 hover:shadow-[0_0_14px_rgba(168,85,247,0.25)]"
-                    }`}
-                  >
-                    {skill}
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div
-          id="projects"
-          className="mt-12 rounded-3xl border border-fuchsia-300/20 bg-slate-950/55 p-6 shadow-[0_0_38px_rgba(168,85,247,0.18)] backdrop-blur"
-        >
-          <h3 className="text-2xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.22)]">
-            {!selectedSkill ? (
-              "All my projects"
-            ) : (
-              <>
-                Projects using{" "}
-                <span className="text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
-                  {selectedSkill}
-                </span>
-              </>
-            )}
-          </h3>
-
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
-            {filteredProjects.map((project) => (
-              <ProjectMiniCard
-                key={project.id}
-                project={project}
-                onClick={() => setSelectedProject(project)}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="experience" className="mx-auto max-w-6xl px-5 py-16">
         <div className="mb-10">
           <p className={labelClass}>Experience</p>
@@ -497,6 +514,177 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section id="skills" className="mx-auto max-w-7xl px-5 py-16">
+        <div className="mb-10">
+          <p className={labelClass}>Skills</p>
+          <h2 className="mt-3 text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.2)]">
+            Skills in Action
+          </h2>
+          <p className="mt-3 max-w-2xl text-slate-400">
+            Select one or more skills to filter projects on the right.
+          </p>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-12">
+          <aside className="lg:col-span-4">
+            <div className="sticky top-28 space-y-5">
+              <div className="rounded-3xl border border-fuchsia-300/20 bg-slate-950/55 p-4 shadow-[0_0_35px_rgba(168,85,247,0.13)] backdrop-blur">
+                <p className="text-sm text-slate-400">Selected skills</p>
+
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  {selectedSkills.length === 0 ? (
+                    <p className="text-xl font-bold text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
+                      None
+                    </p>
+                  ) : (
+                    selectedSkills.map((skill) => (
+                      <button
+                        key={skill}
+                        type="button"
+                        onClick={() => toggleSkill(skill)}
+                        className="rounded-full border border-fuchsia-300 bg-purple-700 px-3 py-1.5 text-xs font-semibold text-white shadow-[0_0_14px_rgba(168,85,247,0.45)]"
+                      >
+                        {skill} ×
+                      </button>
+                    ))
+                  )}
+
+                  {selectedSkills.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={clearSelectedSkills}
+                      className="rounded-full border border-fuchsia-300/20 bg-slate-950/70 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-fuchsia-300 hover:text-fuchsia-200"
+                    >
+                      Clear all
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-fuchsia-300/20 bg-slate-950/55 p-4 shadow-[0_0_35px_rgba(168,85,247,0.13)] backdrop-blur">
+                <h3 className="text-xl font-bold text-white">Skill Filters</h3>
+
+                <div className="mt-4 space-y-3">
+                  {skillGroups.map((group) => {
+                    const isOpen = openSkillGroup === group.title;
+
+                    return (
+                      <div
+                        key={group.title}
+                        className="rounded-2xl border border-fuchsia-300/15 bg-slate-950/55 shadow-[0_0_18px_rgba(88,28,135,0.16)]"
+                      >
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setOpenSkillGroup(isOpen ? null : group.title)
+                          }
+                          className="flex w-full items-center justify-between px-4 py-3 text-left transition hover:text-fuchsia-200"
+                        >
+                          <span className="text-base font-bold text-white drop-shadow-[0_0_10px_rgba(216,180,254,0.18)]">
+                            {group.title}
+                          </span>
+
+                          <span className="rounded-full border border-fuchsia-300/20 bg-slate-950/70 px-2.5 py-1 text-xs font-bold text-fuchsia-300">
+                            {isOpen ? "−" : "+"}
+                          </span>
+                        </button>
+
+                        {isOpen && (
+                          <div className="flex flex-wrap gap-2 border-t border-fuchsia-300/10 px-4 pb-4 pt-3">
+                            {group.skills.map((skill) => (
+                              <button
+                                key={skill}
+                                type="button"
+                                onClick={() => toggleSkill(skill)}
+                                className={`rounded-full border px-2.5 py-1.5 text-xs font-medium transition ${
+                                  selectedSkills.includes(skill)
+                                    ? "border-fuchsia-300 bg-purple-700 text-white shadow-[0_0_14px_rgba(168,85,247,0.45)]"
+                                    : "border-fuchsia-300/15 bg-slate-950/65 text-slate-300 hover:border-fuchsia-300 hover:text-fuchsia-200 hover:shadow-[0_0_12px_rgba(168,85,247,0.22)]"
+                                }`}
+                              >
+                                {skill}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <section id="projects" className="lg:col-span-8">
+            <div className="rounded-3xl border border-fuchsia-300/20 bg-slate-950/55 p-6 shadow-[0_0_38px_rgba(168,85,247,0.18)] backdrop-blur">
+              <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className={labelClass}>Projects</p>
+
+                  <h3 className="mt-3 text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.22)]">
+                    {selectedSkills.length === 0 ? (
+                      "All my projects"
+                    ) : (
+                      <>
+                        Projects using{" "}
+                        <span className="text-fuchsia-300 drop-shadow-[0_0_10px_rgba(217,70,239,0.35)]">
+                          {selectedSkills.join(" + ")}
+                        </span>
+                      </>
+                    )}
+                  </h3>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {(
+                    [
+                      "All",
+                      "Completed",
+                      "In Progress",
+                      "Planned",
+                    ] as StatusFilter[]
+                  ).map((status) => (
+                    <button
+                      key={status}
+                      type="button"
+                      onClick={() => setStatusFilter(status)}
+                      className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                        statusFilter === status
+                          ? "border-fuchsia-300 bg-purple-700 text-white shadow-[0_0_14px_rgba(168,85,247,0.45)]"
+                          : "border-fuchsia-300/15 bg-slate-950/65 text-slate-300 hover:border-fuchsia-300 hover:text-fuchsia-200"
+                      }`}
+                    >
+                      {status}
+                    </button>
+                  ))}
+                </div>
+                <p className="text-sm text-slate-400">
+                  {filteredProjects.length} project
+                  {filteredProjects.length !== 1 ? "s" : ""}
+                </p>
+              </div>
+
+              {filteredProjects.length === 0 ? (
+                <div className="mt-6 rounded-2xl border border-fuchsia-300/15 bg-slate-950/60 p-6 text-slate-300">
+                  No projects match all selected skills. Try removing one skill
+                  or click Clear all.
+                </div>
+              ) : (
+                <div className="mt-6 grid gap-5">
+                  {filteredProjects.map((project) => (
+                    <ProjectMiniCard
+                      key={project.id}
+                      project={project}
+                      onClick={() => setSelectedProject(project)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        </div>
+      </section>
+
       <section
         id="contact"
         className="border-t border-fuchsia-300/10 bg-slate-950/25 backdrop-blur"
@@ -510,7 +698,7 @@ export default function HomePage() {
             </h2>
 
             <p className="mt-4 max-w-2xl text-slate-300">
-              I am open to junior web developer, backend developer, full-stack
+              I am open to junior web developer, mobile developer, full-stack
               developer, WordPress developer, and software developer
               opportunities.
             </p>
