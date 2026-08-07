@@ -6,7 +6,8 @@ This portfolio is designed around the concept of **Skills in Action**. Instead o
 
 ## Live Demo
 
-Portfolio: Coming soon  
+Portfolio: [tri-portfolio-pi.vercel.app/ ](https://tri-portfolio-pi.vercel.app)
+
 GitHub: https://github.com/dominhtri055
 
 ## About
