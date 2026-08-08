@@ -16,7 +16,9 @@ type Project = {
   features: string[];
   github?: string;
   demo?: string;
+  
 };
+type StatusFilter = "All" | Project["status"];
 
 const projects: Project[] = [
   {
