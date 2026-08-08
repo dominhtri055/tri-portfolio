@@ -16,7 +16,6 @@ type Project = {
   features: string[];
   github?: string;
   demo?: string;
-  
 };
 type StatusFilter = "All" | Project["status"];
 
@@ -320,9 +319,9 @@ const outlineButtonClass =
 const navItems = [
   { label: "Home", href: "#" },
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
   { label: "Resume", href: "/resume.pdf" },
 ];
@@ -672,14 +671,20 @@ export default function HomePage() {
                   or click Clear all.
                 </div>
               ) : (
-                <div className="mt-6 grid gap-5">
-                  {filteredProjects.map((project) => (
-                    <ProjectMiniCard
-                      key={project.id}
-                      project={project}
-                      onClick={() => setSelectedProject(project)}
-                    />
-                  ))}
+                <div className="relative mt-6">
+                  <div className="project-scroll max-h-[640px] overflow-y-auto overscroll-contain pr-0">
+                    <div className="grid gap-5">
+                      {filteredProjects.map((project) => (
+                        <ProjectMiniCard
+                          key={project.id}
+                          project={project}
+                          onClick={() => setSelectedProject(project)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-950/90 to-transparent" />
                 </div>
               )}
             </div>

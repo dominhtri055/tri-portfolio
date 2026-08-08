@@ -21,3 +21,11 @@ body {
   background: #a855f7;
   color: #020617;
 }
+.project-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.project-scroll::-webkit-scrollbar {
+  display: none;
+}
