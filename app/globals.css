@@ -10,12 +10,27 @@ html {
 
 body {
   min-height: 100vh;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   background:
     radial-gradient(circle at 20% 10%, rgba(88, 28, 135, 0.62), transparent 32%),
     radial-gradient(circle at 80% 20%, rgba(126, 34, 206, 0.28), transparent 30%),
     radial-gradient(circle at 50% 55%, rgba(59, 7, 100, 0.34), transparent 42%),
     linear-gradient(180deg, #050816 0%, #120721 35%, #1e0b3d 62%, #050816 100%);
   color: #f8fafc;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
 }
 ::selection {
   background: #a855f7;

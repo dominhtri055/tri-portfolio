@@ -316,7 +316,14 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
+}
+
+.pc-title {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(232, 121, 249, 0.92);
 }
 
 .pc-handle {
@@ -642,12 +649,12 @@
   background-image: linear-gradient(to bottom, #ffffff, #e879f9);
 }
 
-/* xóa mini avatar */
+/* Adjust the info bar when the mini avatar is hidden. */
 .portfolio-profile-card .pc-mini-avatar {
   display: none;
 }
 
-/* chỉnh lại info bar khi không còn mini avatar */
+/* Adjust the info bar when the mini avatar is hidden. */
 .portfolio-profile-card .pc-user-details {
   gap: 0;
 }
@@ -656,7 +663,6 @@
   justify-content: center;
 }
 
-/* nút contact */
 .portfolio-profile-card .pc-contact-btn {
   background: rgba(168, 85, 247, 0.35);
 }
@@ -708,12 +714,12 @@
   display: none;
 }
 
-/* Remove mini avatar */
+/* Adjust the info bar when the mini avatar is hidden. */
 .portfolio-profile-card .pc-mini-avatar {
   display: none;
 }
 
-/* Portfolio profile card: purple frame matching the image */
+/* Portfolio profile card frame. */
 .portfolio-profile-card {
   width: min(100%, 360px);
 }
@@ -740,7 +746,7 @@
   overflow: hidden;
 }
 
-/* Make image fit inside the purple frame */
+/* Make image fit inside the frame. */
 .portfolio-profile-card .pc-avatar-content .avatar {
   width: 100%;
   height: 100%;
@@ -770,7 +776,7 @@ object-position: center top;
   display: none;
 }
 
-/* Hide mini avatar */
+/* Adjust the info bar when the mini avatar is hidden. */
 .portfolio-profile-card .pc-mini-avatar {
   display: none;
 }
@@ -795,7 +801,7 @@ object-position: center top;
 }
 
 .portfolio-profile-card .pc-contact-btn:hover {
-  background: linear-gradient(135deg, #6b21a8, #9333ea);
+  background: linear-gradient(135deg, #0d9488, #e879f9);
 }
 @media (max-width: 768px) {
   .portfolio-profile-card {

@@ -50,7 +50,7 @@
   margin: 0;
   position: relative;
   z-index: 3;
-  color: #f8fafc;
+  color: #f5d0fe;
   text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
 }
 
@@ -63,7 +63,7 @@
     color 0.3s ease,
     box-shadow 0.3s ease;
   box-shadow: 0 0 0.5px 1.5px transparent;
-  color: #f8fafc;
+  color: #f5d0fe;
 }
 
 .gooey-nav-container nav ul li a {
@@ -117,7 +117,7 @@
 }
 
 .gooey-nav-container .effect.text {
-  color: #f8fafc;
+  color: #f5d0fe;
   font-size: 0.88rem;
   font-weight: 700;
   line-height: 1;

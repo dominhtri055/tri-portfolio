@@ -359,7 +359,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#050816] bg-[radial-gradient(circle_at_20%_10%,rgba(88,28,135,0.62)_0%,transparent_32%),radial-gradient(circle_at_80%_20%,rgba(126,34,206,0.28)_0%,transparent_30%),radial-gradient(circle_at_50%_55%,rgba(59,7,100,0.34)_0%,transparent_42%),linear-gradient(180deg,#050816_0%,#120721_35%,#1e0b3d_62%,#050816_100%)] text-slate-100">
-      <header className="fixed left-1/2 top-5 z-[99] flex w-[min(94%,980px)] -translate-x-1/2 items-center justify-between gap-4 rounded-2xl border border-fuchsia-300/20 bg-slate-950/80 px-3 py-2 shadow-[0_0_35px_rgba(168,85,247,0.25)] backdrop-blur-xl">
+      <header className="fixed left-1/2 top-5 z-[99] flex w-[min(94%,980px)] -translate-x-1/2 items-center justify-between gap-4 rounded-2xl border border-fuchsia-300/15 bg-slate-950/82 px-3 py-2 shadow-[0_18px_60px_rgba(2,6,23,0.38)] backdrop-blur-xl">
         <a
           href="#"
           className="hidden shrink-0 px-2 text-sm font-extrabold text-white drop-shadow-[0_0_10px_rgba(217,70,239,0.35)] sm:inline-flex"
@@ -400,7 +400,7 @@ export default function HomePage() {
           mouseInfluence={0.08}
         />
 
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.2),transparent_34%),linear-gradient(180deg,rgba(5,8,22,0.35)_0%,rgba(5,8,22,0.78)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.13),transparent_34%),linear-gradient(180deg,rgba(5,8,22,0.35)_0%,rgba(5,8,22,0.78)_100%)]" />
 
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-3xl">
@@ -408,7 +408,7 @@ export default function HomePage() {
               Web & Mobile Developer Portfolio
             </p>
 
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_0_18px_rgba(216,180,254,0.28)] md:text-6xl">
+            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_0_18px_rgba(216,180,254,0.2)] md:text-6xl">
               Hi, I&apos;m Tri Do.
             </h1>
 
@@ -459,7 +459,7 @@ export default function HomePage() {
 
       <section
         id="about"
-        className="border-y border-fuchsia-300/10 bg-slate-950/25 backdrop-blur"
+        className="border-y border-fuchsia-300/15 bg-slate-950/25 backdrop-blur"
       >
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-16 md:grid-cols-3">
           <div>
@@ -497,7 +497,7 @@ export default function HomePage() {
               <p className="mt-1 text-fuchsia-300">Beetech Solution LTD</p>
             </div>
 
-            <p className="text-slate-400">Apr 2026 — Jun 2026</p>
+            <p className="text-slate-400">Apr 2026 - Jun 2026</p>
           </div>
 
           <ul className="mt-6 list-inside list-disc space-y-3 text-slate-300">
@@ -529,7 +529,7 @@ export default function HomePage() {
         <div className="grid gap-6 lg:grid-cols-12">
           <aside className="lg:col-span-4">
             <div className="sticky top-28 space-y-5">
-              <div className="rounded-3xl border border-fuchsia-300/20 bg-slate-950/55 p-4 shadow-[0_0_35px_rgba(168,85,247,0.13)] backdrop-blur">
+              <div className="rounded-3xl border border-fuchsia-300/15 bg-slate-950/55 p-4 shadow-[0_0_35px_rgba(168,85,247,0.13)] backdrop-blur">
                 <p className="text-sm text-slate-400">Selected skills</p>
 
                 <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -545,7 +545,7 @@ export default function HomePage() {
                         onClick={() => toggleSkill(skill)}
                         className="rounded-full border border-fuchsia-300 bg-purple-700 px-3 py-1.5 text-xs font-semibold text-white shadow-[0_0_14px_rgba(168,85,247,0.45)]"
                       >
-                        {skill} ×
+                        {skill} x
                       </button>
                     ))
                   )}
@@ -554,7 +554,7 @@ export default function HomePage() {
                     <button
                       type="button"
                       onClick={clearSelectedSkills}
-                      className="rounded-full border border-fuchsia-300/20 bg-slate-950/70 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-fuchsia-300 hover:text-fuchsia-200"
+                      className="rounded-full border border-fuchsia-300/15 bg-slate-950/70 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-fuchsia-300 hover:text-fuchsia-200"
                     >
                       Clear all
                     </button>
@@ -562,7 +562,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-fuchsia-300/20 bg-slate-950/55 p-4 shadow-[0_0_35px_rgba(168,85,247,0.13)] backdrop-blur">
+              <div className="rounded-3xl border border-fuchsia-300/15 bg-slate-950/55 p-4 shadow-[0_0_35px_rgba(168,85,247,0.13)] backdrop-blur">
                 <h3 className="text-xl font-bold text-white">Skill Filters</h3>
 
                 <div className="mt-4 space-y-3">
@@ -581,17 +581,17 @@ export default function HomePage() {
                           }
                           className="flex w-full items-center justify-between px-4 py-3 text-left transition hover:text-fuchsia-200"
                         >
-                          <span className="text-base font-bold text-white drop-shadow-[0_0_10px_rgba(216,180,254,0.18)]">
+                          <span className="text-base font-bold text-white drop-shadow-[0_0_10px_rgba(216,180,254,0.2)]">
                             {group.title}
                           </span>
 
-                          <span className="rounded-full border border-fuchsia-300/20 bg-slate-950/70 px-2.5 py-1 text-xs font-bold text-fuchsia-300">
-                            {isOpen ? "−" : "+"}
+                          <span className="rounded-full border border-fuchsia-300/15 bg-slate-950/70 px-2.5 py-1 text-xs font-bold text-fuchsia-300">
+                            {isOpen ? "-" : "+"}
                           </span>
                         </button>
 
                         {isOpen && (
-                          <div className="flex flex-wrap gap-2 border-t border-fuchsia-300/10 px-4 pb-4 pt-3">
+                          <div className="flex flex-wrap gap-2 border-t border-fuchsia-300/15 px-4 pb-4 pt-3">
                             {group.skills.map((skill) => (
                               <button
                                 key={skill}
@@ -600,7 +600,7 @@ export default function HomePage() {
                                 className={`rounded-full border px-2.5 py-1.5 text-xs font-medium transition ${
                                   selectedSkills.includes(skill)
                                     ? "border-fuchsia-300 bg-purple-700 text-white shadow-[0_0_14px_rgba(168,85,247,0.45)]"
-                                    : "border-fuchsia-300/15 bg-slate-950/65 text-slate-300 hover:border-fuchsia-300 hover:text-fuchsia-200 hover:shadow-[0_0_12px_rgba(168,85,247,0.22)]"
+                                    : "border-fuchsia-300/15 bg-slate-950/65 text-slate-300 hover:border-fuchsia-300 hover:text-fuchsia-200 hover:shadow-[0_0_12px_rgba(168,85,247,0.13)]"
                                 }`}
                               >
                                 {skill}
@@ -617,12 +617,12 @@ export default function HomePage() {
           </aside>
 
           <section id="projects" className="lg:col-span-8">
-            <div className="rounded-3xl border border-fuchsia-300/20 bg-slate-950/55 p-6 shadow-[0_0_38px_rgba(168,85,247,0.18)] backdrop-blur">
+            <div className="rounded-3xl border border-fuchsia-300/15 bg-slate-950/55 p-6 shadow-[0_0_38px_rgba(168,85,247,0.13)] backdrop-blur">
               <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
                 <div>
                   <p className={labelClass}>Projects</p>
 
-                  <h3 className="mt-3 text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.22)]">
+                  <h3 className="mt-3 text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.2)]">
                     {selectedSkills.length === 0 ? (
                       "All my projects"
                     ) : (
@@ -694,10 +694,10 @@ export default function HomePage() {
 
       <section
         id="contact"
-        className="border-t border-fuchsia-300/10 bg-slate-950/25 backdrop-blur"
+        className="border-t border-fuchsia-300/15 bg-slate-950/25 backdrop-blur"
       >
         <div className="mx-auto max-w-6xl px-5 py-16">
-          <div className="rounded-3xl border border-fuchsia-300/20 bg-slate-950/60 p-8 shadow-[0_0_38px_rgba(168,85,247,0.16)] backdrop-blur">
+          <div className="rounded-3xl border border-fuchsia-300/15 bg-slate-950/60 p-8 shadow-[0_0_38px_rgba(168,85,247,0.13)] backdrop-blur">
             <p className={labelClass}>Contact</p>
 
             <h2 className="mt-3 text-3xl font-bold text-white drop-shadow-[0_0_12px_rgba(216,180,254,0.2)]">
@@ -748,7 +748,7 @@ export default function HomePage() {
       )}
 
       <footer className="px-5 py-8 text-center text-sm text-slate-500">
-        © {new Date().getFullYear()} Tri Do.
+        &copy; {new Date().getFullYear()} Tri Do.
       </footer>
     </main>
   );
@@ -765,7 +765,7 @@ function ProjectMiniCard({
     <button
       type="button"
       onClick={onClick}
-      className="w-full rounded-2xl border border-fuchsia-300/15 bg-slate-950/75 p-5 text-left shadow-[0_0_22px_rgba(15,23,42,0.8)] transition hover:border-fuchsia-300/70 hover:bg-slate-950 hover:shadow-[0_0_24px_rgba(168,85,247,0.28)]"
+      className="w-full rounded-2xl border border-fuchsia-300/15 bg-slate-950/75 p-5 text-left shadow-[0_0_22px_rgba(15,23,42,0.8)] transition hover:border-fuchsia-300/70 hover:bg-slate-950 hover:shadow-[0_0_24px_rgba(168,85,247,0.13)]"
     >
       <div className="flex items-start justify-between gap-4">
         <div>
@@ -802,7 +802,7 @@ function ProjectDetailsModal({
       onClick={onClose}
     >
       <div
-        className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-fuchsia-300/35 bg-slate-950 p-6 shadow-[0_0_45px_rgba(168,85,247,0.35)]"
+        className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-fuchsia-300/35 bg-slate-950 p-6 shadow-[0_0_45px_rgba(168,85,247,0.13)]"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
@@ -847,7 +847,7 @@ function ProjectDetailsModal({
           <ul className="mt-3 grid gap-2 text-slate-300 md:grid-cols-2">
             {project.features.map((feature) => (
               <li key={feature} className="flex gap-2">
-                <span className="text-fuchsia-300">•</span>
+                <span className="text-fuchsia-300">*</span>
                 <span>{feature}</span>
               </li>
             ))}
@@ -888,7 +888,7 @@ function StatusBadge({ status }: { status: Project["status"] }) {
       ? "border-emerald-300/40 bg-emerald-400/10 text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.15)]"
       : status === "In Progress"
         ? "border-yellow-300/40 bg-yellow-400/10 text-yellow-300 shadow-[0_0_12px_rgba(250,204,21,0.15)]"
-        : "border-fuchsia-300/25 bg-fuchsia-400/10 text-fuchsia-200 shadow-[0_0_12px_rgba(217,70,239,0.15)]";
+        : "border-fuchsia-300/35 bg-purple-700/10 text-fuchsia-200 shadow-[0_0_12px_rgba(217,70,239,0.15)]";
 
   return (
     <span
