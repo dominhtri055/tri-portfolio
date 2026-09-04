@@ -93,7 +93,12 @@ button { color: inherit; font: inherit; }
   max-width: 760px; margin: 24px 0 28px; font-size: clamp(56px, 6.6vw, 94px);
   line-height: .96; letter-spacing: -.072em; text-wrap: balance;
 }
-.hero h1 em { color: #c7a3ff; font-family: Georgia, serif; font-weight: 400; }
+.hero h1 em {
+  color: #c7a3ff;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+}
 .hero-lede { max-width: 680px; margin: 0; color: #bcb8c8; font-size: 19px; line-height: 1.72; }
 .hero-actions, .project-links, .contact-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
 .hero-actions { margin-top: 34px; }
