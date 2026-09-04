@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import TrueFocus from "@/components/TrueFocus/TrueFocus";
 import {
   FiArrowDown,
   FiArrowUpRight,
@@ -147,7 +148,17 @@ export default function HomePage() {
       <section className="hero section-shell" id="top">
         <div className="hero-copy">
           <p className="eyebrow"><span /> Junior Full-Stack Developer · Moncton, NB</p>
-          <h1>I build reliable products from <em>interface</em> to database.</h1>
+          <TrueFocus
+            sentence="I build reliable products from interface to database."
+            manualMode={false}
+            blurAmount={0}
+            borderColor="#c7a3ff"
+            glowColor="rgba(199, 163, 255, 0.6)"
+            animationDuration={0.45}
+            pauseBetweenAnimations={0.45}
+            className="focus-container--hero hero-title"
+            headingLevel={1}
+          />
           <p className="hero-lede">
             Recent NBCC Software Development graduate with hands-on experience building
             React and Next.js interfaces, mobile apps, typed APIs, authentication, and

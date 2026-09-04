@@ -47,6 +47,32 @@
   filter: drop-shadow(0 0 16px var(--glow-color, #fff));
 }
 
+.hero-title.focus-container {
+  gap: 0.12em 0.22em;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.hero-title .focus-word {
+  color: var(--ink);
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-shadow: none;
+  cursor: default;
+}
+
+.hero-title .focus-word:nth-of-type(6) {
+  color: #c7a3ff;
+}
+
+.hero-title .focus-word.active {
+  text-shadow: 0 0 24px rgba(199, 163, 255, 0.32);
+}
+
 .corner {
   position: absolute;
   width: 1rem;
@@ -102,5 +128,16 @@
     width: 0.78rem;
     height: 0.78rem;
     border-width: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .focus-word {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-title .focus-frame {
+    display: none;
   }
 }

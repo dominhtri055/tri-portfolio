@@ -14,6 +14,7 @@ const TrueFocus = ({
   animationDuration = 0.5,
   pauseBetweenAnimations = 1,
   className = "",
+  headingLevel,
 }) => {
   const words = sentence.split(separator).filter(Boolean);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -76,6 +77,8 @@ const TrueFocus = ({
     <div
       className={`focus-container ${className}`}
       ref={containerRef}
+      role={headingLevel ? "heading" : undefined}
+      aria-level={headingLevel}
       aria-label={sentence}
     >
       {words.map((word, index) => {
