@@ -13,15 +13,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tri Do | Software Developer Portfolio",
+  metadataBase: new URL("https://tri-portfolio-pi.vercel.app"),
+  title: "Tri Do | Junior Full-Stack Developer",
   description:
-    "Portfolio of Tri Do, a Moncton-based web and mobile developer building React, Next.js, React Native, backend API, and database-driven projects.",
+    "Portfolio of Tri Do, a Moncton-based junior full-stack developer building React, Next.js, React Native, APIs, and database-backed products.",
+  keywords: [
+    "Tri Do",
+    "Junior Full-Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "Moncton Software Developer",
+  ],
+  authors: [{ name: "Tri Do", url: "https://github.com/dominhtri055" }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Tri Do | Software Developer Portfolio",
+    title: "Tri Do | Junior Full-Stack Developer",
     description:
-      "Web, mobile, and backend projects by Tri Do, a Software Development graduate based in Moncton, NB.",
+      "Selected web, mobile, and backend engineering work by Tri Do in Moncton, NB.",
     type: "website",
+    url: "/",
+    siteName: "Tri Do Portfolio",
   },
+  twitter: {
+    card: "summary",
+    title: "Tri Do | Junior Full-Stack Developer",
+    description: "Selected web, mobile, and backend engineering work by Tri Do.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
