@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TrueFocus from "@/components/TrueFocus/TrueFocus";
 import { translations, type Language } from "./content";
 import {
   FiArrowDown,
   FiArrowUpRight,
   FiCheck,
+  FiChevronDown,
   FiDownload,
   FiGithub,
   FiLinkedin,
@@ -80,6 +81,7 @@ export default function HomePage() {
   const [language, setLanguage] = useState<Language>("en");
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [preferencesLoaded, setPreferencesLoaded] = useState(false);
+  const languageMenuRef = useRef<HTMLDetailsElement>(null);
   const t = translations[language];
   const selectedShot = { ...t.shots[activeShot], src: shotSources[activeShot] };
 
@@ -100,6 +102,21 @@ export default function HomePage() {
     window.localStorage.setItem("tri-language", language);
     window.localStorage.setItem("tri-theme", theme);
   }, [language, theme, preferencesLoaded]);
+
+  useEffect(() => {
+    const closeLanguageMenu = (event: PointerEvent) => {
+      const menu = languageMenuRef.current;
+      if (menu?.open && !menu.contains(event.target as Node)) menu.open = false;
+    };
+
+    document.addEventListener("pointerdown", closeLanguageMenu);
+    return () => document.removeEventListener("pointerdown", closeLanguageMenu);
+  }, []);
+
+  const selectLanguage = (nextLanguage: Language) => {
+    setLanguage(nextLanguage);
+    if (languageMenuRef.current) languageMenuRef.current.open = false;
+  };
 
   return (
     <main>
@@ -123,19 +140,38 @@ export default function HomePage() {
           </div>
 
           <div className="nav-actions">
-            <label className="language-control">
-              <FiGlobe aria-hidden="true" />
-              <span className="sr-only">{t.controls.language}</span>
-              <select
-                value={language}
-                onChange={(event) => setLanguage(event.target.value as Language)}
-                aria-label={t.controls.language}
-              >
-                <option value="en">EN</option>
-                <option value="fr">FR</option>
-                <option value="vi">VI</option>
-              </select>
-            </label>
+            <details
+              className="language-menu"
+              ref={languageMenuRef}
+              onKeyDown={(event) => {
+                if (event.key === "Escape" && languageMenuRef.current) {
+                  languageMenuRef.current.open = false;
+                  languageMenuRef.current.querySelector("summary")?.focus();
+                }
+              }}
+            >
+              <summary aria-label={t.controls.language} title={t.controls.language}>
+                <FiGlobe aria-hidden="true" />
+                <span>{language.toUpperCase()}</span>
+                <FiChevronDown className="language-chevron" aria-hidden="true" />
+              </summary>
+              <div className="language-popover" role="menu">
+                {(["en", "fr", "vi"] as Language[]).map((option) => (
+                  <button
+                    type="button"
+                    role="menuitemradio"
+                    aria-checked={language === option}
+                    className={language === option ? "active" : ""}
+                    onClick={() => selectLanguage(option)}
+                    key={option}
+                  >
+                    <span className="language-code">{option.toUpperCase()}</span>
+                    <span className="language-name">{translations[option].languageName}</span>
+                    {language === option && <FiCheck aria-hidden="true" />}
+                  </button>
+                ))}
+              </div>
+            </details>
             <button
               className="theme-toggle"
               type="button"
