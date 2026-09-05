@@ -65,8 +65,16 @@
   cursor: default;
 }
 
-.hero-title .focus-word:nth-of-type(6) {
+.hero-title-en .focus-word:nth-of-type(6),
+.hero-title-fr .focus-word:nth-of-type(7),
+.hero-title-vi .focus-word:nth-of-type(10),
+.hero-title-vi .focus-word:nth-of-type(11) {
   color: #c7a3ff;
+}
+
+.hero-title-fr,
+.hero-title-vi {
+  font-size: clamp(48px, 5.8vw, 82px);
 }
 
 .hero-title .focus-word.active {
@@ -120,6 +128,11 @@
 }
 
 @media (max-width: 520px) {
+  .hero-title-fr,
+  .hero-title-vi {
+    font-size: clamp(40px, 12.5vw, 58px);
+  }
+
   .focus-word {
     font-size: 2.05rem;
   }

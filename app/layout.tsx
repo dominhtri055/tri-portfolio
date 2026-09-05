@@ -12,6 +12,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const preferenceScript = `
+  try {
+    const savedTheme = localStorage.getItem("tri-theme");
+    const theme = savedTheme === "light" || savedTheme === "dark"
+      ? savedTheme
+      : (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    const savedLanguage = localStorage.getItem("tri-language");
+    document.documentElement.dataset.theme = theme;
+    if (["en", "fr", "vi"].includes(savedLanguage)) document.documentElement.lang = savedLanguage;
+  } catch {}
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://tri-portfolio-pi.vercel.app"),
   title: "Tri Do | Junior Full-Stack Developer",
@@ -49,7 +61,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: preferenceScript }} />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
