@@ -47,10 +47,10 @@ const supportingProjects = [
 ];
 
 const capabilitySkills = [
-  ["React", "Next.js", "TypeScript", "JavaScript", "Angular", "HTML / CSS", "Tailwind CSS"],
-  ["Node.js", "Express", "Java", "Spring Boot", "Python", "Flask", "REST APIs"],
-  ["PostgreSQL", "Supabase", "MongoDB", "MySQL", "Authentication", "Row Level Security"],
-  ["React Native", "Expo", "Kotlin", "Git", "Docker", "Postman", "Figma"],
+  ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+  ["Node.js", "Express", "REST APIs", "Spring Boot"],
+  ["PostgreSQL", "Supabase", "MongoDB", "Row Level Security"],
+  ["React Native", "Git / GitHub", "Docker", "Vercel"],
 ];
 
 const personSchema = {
