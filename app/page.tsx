@@ -56,6 +56,45 @@ const capabilitySkills = [
   ["React Native", "Git / GitHub", "Docker", "Vercel"],
 ];
 
+const certificationCopy = {
+  en: {
+    kicker: "Certifications",
+    title: "Verified front-end foundations.",
+    label: "Certification",
+    verified: "Verified freeCodeCamp credential.",
+    view: "View credential",
+  },
+  fr: {
+    kicker: "Certifications",
+    title: "Des bases front-end vérifiées.",
+    label: "Certification",
+    verified: "Certification freeCodeCamp vérifiée.",
+    view: "Voir la certification",
+  },
+  vi: {
+    kicker: "Chứng chỉ",
+    title: "Nền tảng front-end đã được xác thực.",
+    label: "Chứng chỉ",
+    verified: "Chứng chỉ freeCodeCamp có thể xác minh.",
+    view: "Xem chứng chỉ",
+  },
+} as const;
+
+const certifications = [
+  {
+    title: "Front-End Development Libraries",
+    issued: "Sep 2026",
+    href: "https://freecodecamp.org/certification/baal2908/front-end-development-libraries-v9",
+    featured: true,
+  },
+  {
+    title: "Responsive Web Design",
+    issued: "Jul 2026",
+    href: "https://freecodecamp.org/certification/baal2908/responsive-web-design-v9",
+    featured: false,
+  },
+] as const;
+
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -86,6 +125,7 @@ export default function HomePage() {
   const [preferencesLoaded, setPreferencesLoaded] = useState(false);
   const languageMenuRef = useRef<HTMLDetailsElement>(null);
   const t = translations[language];
+  const certificationText = certificationCopy[language];
   const selectedShot = { ...t.shots[activeShot], src: shotSources[activeShot] };
 
   useEffect(() => {
@@ -375,6 +415,35 @@ export default function HomePage() {
               <p className="organization">{t.career.college}</p>
               <p>{t.career.educationText}</p>
             </article>
+          </div>
+
+          <div className="section-heading" style={{ marginTop: "72px", marginBottom: "32px" }}>
+            <div>
+              <p className="section-kicker">{certificationText.kicker}</p>
+              <h2>{certificationText.title}</h2>
+            </div>
+          </div>
+
+          <div className="career-grid" id="certifications">
+            {certifications.map((certificate) => (
+              <article
+                className={`career-card ${certificate.featured ? "primary-career" : ""}`}
+                key={certificate.title}
+              >
+                <div className="career-meta">
+                  <span>{certificationText.label}</span>
+                  <time>{certificate.issued}</time>
+                </div>
+                <h3>{certificate.title}</h3>
+                <p className="organization">freeCodeCamp</p>
+                <p>{certificationText.verified}</p>
+                <div className="project-links" style={{ marginTop: "24px" }}>
+                  <a className="button button-secondary" href={certificate.href} target="_blank" rel="noreferrer">
+                    {certificationText.view} <FiArrowUpRight aria-hidden="true" />
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
