@@ -1,19 +1,33 @@
 # Tri Do — Developer Portfolio
 
-A recruiter-focused portfolio for **Tri Do**, a junior full-stack developer based in Moncton, New Brunswick.
+Recruiter-focused portfolio for **Tri Do**, a junior full-stack developer based in Moncton, New Brunswick, Canada.
 
-## Live site
+**Live site:** https://tri-portfolio-pi.vercel.app/
 
-[tri-portfolio-pi.vercel.app](https://tri-portfolio-pi.vercel.app)
+## Purpose
 
-## What the site highlights
+This portfolio is designed to make technical evidence easy to scan. Instead of listing every school exercise or technology I have used, it focuses on a smaller set of completed projects and the engineering decisions behind them.
 
-- ShopPilot as the flagship product case study
-- Real product screenshots and engineering decisions
-- Full-stack, mobile, and API project evidence
-- Backend Developer internship at Beetech Solution LTD
+The site highlights:
+
+- **ShopPilot** as the flagship product case study
+- Live product screenshots and implementation evidence
+- Authentication, database, API, storage, and analytics work
+- Full-stack Java/Spring and backend API projects
+- Professional internship experience at Beetech Solution LTD
 - NBCC Software Development education
-- Direct résumé, GitHub, LinkedIn, and email actions
+- Direct access to résumé, GitHub, LinkedIn, and project source code
+
+## Featured Projects
+
+### ShopPilot
+Cross-platform merchant operations platform built with React Native, TypeScript, Supabase, PostgreSQL, authentication, Row Level Security, storage, orders, inventory, and analytics.
+
+### Restaurant Event Management
+Modular Java/Spring Boot application with MVC, Thymeleaf, MySQL, validation, search, archive workflows, REST APIs, and authentication.
+
+### License Plate Assignment API
+Node.js/Express/MongoDB REST API with VIN validation, plate assignment/revocation, API-key middleware, rate limiting, and structured error handling.
 
 ## Stack
 
@@ -23,7 +37,7 @@ A recruiter-focused portfolio for **Tri Do**, a junior full-stack developer base
 - Tailwind CSS
 - React Icons
 
-## Local development
+## Local Development
 
 ```bash
 npm install
@@ -32,15 +46,16 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Validation
+## Quality Checks
 
 ```bash
 npm run lint
 npm run build
 ```
 
-## Contact
+## Links
 
-- [GitHub](https://github.com/dominhtri055)
-- [LinkedIn](https://www.linkedin.com/in/trido2908/)
-- [Email](mailto:dominhtri055@gmail.com)
+- Portfolio: https://tri-portfolio-pi.vercel.app/
+- GitHub: https://github.com/dominhtri055
+- LinkedIn: https://www.linkedin.com/in/trido2908/
+- Email: mailto:dominhtri055@gmail.com
