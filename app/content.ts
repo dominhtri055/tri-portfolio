@@ -28,7 +28,7 @@ export const translations = {
         "Product CRUD, inventory filters, image upload, orders, and refunds",
         "Typed data access with revenue, conversion, and product analytics",
       ],
-      screenshotsAria: "ShopPilot screenshots", viewGithub: "View {title} on GitHub",
+      screenshotsAria: "ShopPilot screenshots", viewGithub: "Open {title}",
     },
     shots: [
       { label: "Dashboard", alt: "ShopPilot merchant dashboard showing revenue, orders, inventory, and conversion metrics" },
@@ -36,9 +36,9 @@ export const translations = {
       { label: "Insights", alt: "ShopPilot analytics screen showing weekly revenue and inventory risks" },
     ],
     projects: [
+      { type: "Full-stack booking platform", title: "ScheduleBooker", description: "A multilingual Flask appointment platform with guest and customer booking, conflict-safe availability, admin calendars and reporting, audited cancellation, and production PostgreSQL persistence.", signals: ["Responsive booking flows", "PostgreSQL + migrations", "Security and automated tests"] },
       { type: "Full-stack web application", title: "Restaurant Event Management", description: "A database-backed event system with server-rendered views, validated forms, search by name and date, and archive-based deletion.", signals: ["MVC architecture", "Server-side validation", "Search and archive workflows"] },
       { type: "Backend REST API", title: "License Plate Assignment API", description: "A REST API that validates VINs and manages Ontario-style plate assignment, verification, and revocation with persistent storage.", signals: ["API-key middleware", "Validation and error handling", "Documented request workflows"] },
-      { type: "Front-end engineering", title: "Developer Portfolio", description: "This responsive portfolio turns project work into scannable evidence with accessible interactions, focused content, and performance-conscious media.", signals: ["Responsive layout", "Semantic structure", "Optimized project media"] },
     ],
     career: {
       kicker: "Experience & education", title: "Built on real delivery.", experience: "Experience", education: "Education",
@@ -99,7 +99,7 @@ export const translations = {
         "CRUD des produits, filtres de stock, téléversement d’images, commandes et remboursements",
         "Accès typé aux données pour les revenus, la conversion et les analyses produits",
       ],
-      screenshotsAria: "Captures d’écran de ShopPilot", viewGithub: "Voir {title} sur GitHub",
+      screenshotsAria: "Captures d’écran de ShopPilot", viewGithub: "Ouvrir {title}",
     },
     shots: [
       { label: "Tableau de bord", alt: "Tableau de bord ShopPilot affichant les revenus, commandes, stocks et conversions" },
@@ -107,9 +107,9 @@ export const translations = {
       { label: "Analyses", alt: "Écran d’analyses ShopPilot avec revenus hebdomadaires et risques de stock" },
     ],
     projects: [
+      { type: "Plateforme de réservation full-stack", title: "ScheduleBooker", description: "Une plateforme de rendez-vous Flask multilingue avec réservation client et invité, disponibilité sans conflit, calendriers et rapports administratifs, annulation auditée et PostgreSQL en production.", signals: ["Flux de réservation responsive", "PostgreSQL + migrations", "Sécurité et tests automatisés"] },
       { type: "Application web full-stack", title: "Restaurant Event Management", description: "Un système d’événements connecté à une base de données, avec vues rendues côté serveur, formulaires validés, recherche et archivage.", signals: ["Architecture MVC", "Validation côté serveur", "Recherche et archivage"] },
       { type: "API REST backend", title: "License Plate Assignment API", description: "Une API REST qui valide les NIV et gère l’attribution, la vérification et la révocation de plaques ontariennes avec stockage persistant.", signals: ["Middleware par clé API", "Validation et gestion des erreurs", "Flux de requêtes documentés"] },
-      { type: "Ingénierie front-end", title: "Developer Portfolio", description: "Ce portfolio responsive transforme les projets en preuves faciles à parcourir grâce à des interactions accessibles, un contenu ciblé et des médias optimisés.", signals: ["Mise en page responsive", "Structure sémantique", "Médias de projet optimisés"] },
     ],
     career: {
       kicker: "Expérience et formation", title: "Fondé sur des réalisations concrètes.", experience: "Expérience", education: "Formation",
@@ -170,7 +170,7 @@ export const translations = {
         "CRUD sản phẩm, lọc tồn kho, tải ảnh, xử lý đơn hàng và hoàn tiền",
         "Truy cập dữ liệu có kiểu cho doanh thu, tỷ lệ chuyển đổi và phân tích sản phẩm",
       ],
-      screenshotsAria: "Ảnh giao diện ShopPilot", viewGithub: "Xem {title} trên GitHub",
+      screenshotsAria: "Ảnh giao diện ShopPilot", viewGithub: "Mở {title}",
     },
     shots: [
       { label: "Tổng quan", alt: "Bảng điều khiển ShopPilot hiển thị doanh thu, đơn hàng, tồn kho và tỷ lệ chuyển đổi" },
@@ -178,9 +178,9 @@ export const translations = {
       { label: "Phân tích", alt: "Màn hình phân tích ShopPilot hiển thị doanh thu tuần và rủi ro tồn kho" },
     ],
     projects: [
+      { type: "Nền tảng đặt lịch full-stack", title: "ScheduleBooker", description: "Nền tảng đặt lịch Flask đa ngôn ngữ cho khách và người dùng có tài khoản, với kiểm tra lịch trùng, lịch và báo cáo quản trị, hủy lịch có audit và PostgreSQL khi triển khai production.", signals: ["Luồng đặt lịch responsive", "PostgreSQL + migrations", "Bảo mật và kiểm thử tự động"] },
       { type: "Ứng dụng web full-stack", title: "Restaurant Event Management", description: "Hệ thống sự kiện kết nối cơ sở dữ liệu với giao diện render từ server, biểu mẫu có xác thực, tìm kiếm theo tên/ngày và cơ chế lưu trữ thay vì xóa hẳn.", signals: ["Kiến trúc MVC", "Xác thực phía server", "Quy trình tìm kiếm và lưu trữ"] },
       { type: "Backend REST API", title: "License Plate Assignment API", description: "REST API xác thực VIN và quản lý việc cấp, kiểm tra, thu hồi biển số theo định dạng Ontario với dữ liệu được lưu bền vững.", signals: ["Middleware API key", "Xác thực và xử lý lỗi", "Quy trình request có tài liệu"] },
-      { type: "Kỹ thuật front-end", title: "Developer Portfolio", description: "Portfolio responsive này biến các dự án thành bằng chứng dễ đọc với tương tác dễ tiếp cận, nội dung tập trung và hình ảnh được tối ưu.", signals: ["Bố cục responsive", "Cấu trúc semantic", "Hình ảnh dự án được tối ưu"] },
     ],
     career: {
       kicker: "Kinh nghiệm và học vấn", title: "Xây dựng từ trải nghiệm thực tế.", experience: "Kinh nghiệm", education: "Học vấn",
@@ -215,4 +215,3 @@ export const translations = {
 } as const;
 
 export type Language = keyof typeof translations;
-
