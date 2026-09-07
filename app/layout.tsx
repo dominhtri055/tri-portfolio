@@ -26,9 +26,9 @@ const preferenceScript = `
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tri-portfolio-pi.vercel.app"),
-  title: "Tri Do | Junior Full-Stack Developer",
+  title: "Tri Do | Junior Full-Stack Developer | React · Next.js · TypeScript",
   description:
-    "Portfolio of Tri Do, a Moncton-based junior full-stack developer building React, Next.js, React Native, APIs, and database-backed products.",
+    "Portfolio of Tri Do, a Moncton-based Junior Full-Stack Developer focused on React, Next.js, and TypeScript, with experience across APIs, authentication, and database-backed products.",
   keywords: [
     "Tri Do",
     "Junior Full-Stack Developer",
@@ -40,17 +40,17 @@ export const metadata: Metadata = {
   authors: [{ name: "Tri Do", url: "https://github.com/dominhtri055" }],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Tri Do | Junior Full-Stack Developer",
+    title: "Tri Do | Junior Full-Stack Developer | React · Next.js · TypeScript",
     description:
-      "Selected web, mobile, and backend engineering work by Tri Do in Moncton, NB.",
+      "Selected React, Next.js, TypeScript, mobile, API, and backend engineering work by Tri Do in Moncton, NB.",
     type: "website",
     url: "/",
     siteName: "Tri Do Portfolio",
   },
   twitter: {
     card: "summary",
-    title: "Tri Do | Junior Full-Stack Developer",
-    description: "Selected web, mobile, and backend engineering work by Tri Do.",
+    title: "Tri Do | Junior Full-Stack Developer | React · Next.js · TypeScript",
+    description: "Selected React, Next.js, TypeScript, mobile, API, and backend engineering work by Tri Do.",
   },
   robots: { index: true, follow: true },
 };
