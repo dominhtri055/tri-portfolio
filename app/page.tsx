@@ -28,27 +28,30 @@ const shotSources = [
 const supportingProjects = [
   {
     number: "02",
-    stack: ["Java", "Spring Boot", "Thymeleaf", "MySQL"],
-    github: "https://github.com/dominhtri055/restaurant-event-app",
+    stack: ["Python", "Flask", "PostgreSQL", "JavaScript"],
+    href: "https://schedulebooker-web.onrender.com/",
+    kind: "live",
     accent: "violet",
   },
   {
     number: "03",
-    stack: ["Node.js", "Express", "TypeScript", "MongoDB"],
-    github: "https://github.com/dominhtri055/license-plate-assignment-api.git",
+    stack: ["Java", "Spring Boot", "Thymeleaf", "MySQL"],
+    href: "https://github.com/dominhtri055/restaurant-event-app",
+    kind: "github",
     accent: "blue",
   },
   {
     number: "04",
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/dominhtri055/tri-portfolio",
+    stack: ["Node.js", "Express", "MongoDB", "Mongoose"],
+    href: "https://github.com/dominhtri055/license-plate-assignment-api.git",
+    kind: "github",
     accent: "pink",
   },
 ];
 
 const capabilitySkills = [
   ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-  ["Node.js", "Express", "REST APIs", "Spring Boot"],
+  ["Node.js", "Express", "Python / Flask", "REST APIs"],
   ["PostgreSQL", "Supabase", "MongoDB", "Row Level Security"],
   ["React Native", "Git / GitHub", "Docker", "Vercel"],
 ];
@@ -73,7 +76,7 @@ const personSchema = {
     "https://github.com/dominhtri055",
     "https://www.linkedin.com/in/trido2908/",
   ],
-  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "React Native", "Spring Boot", "Supabase"],
+  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "Python", "Flask", "React Native", "Supabase"],
 };
 
 export default function HomePage() {
@@ -329,8 +332,8 @@ export default function HomePage() {
             <article className={`project-card ${project.accent}`} key={copy.title}>
               <div className="project-card-top">
                 <span>{project.number}</span>
-                <a href={project.github} target="_blank" rel="noreferrer" aria-label={t.work.viewGithub.replace("{title}", copy.title)}>
-                  <FiGithub aria-hidden="true" /><FiArrowUpRight aria-hidden="true" />
+                <a href={project.href} target="_blank" rel="noreferrer" aria-label={t.work.viewGithub.replace("{title}", copy.title)}>
+                  {project.kind === "github" && <FiGithub aria-hidden="true" />}<FiArrowUpRight aria-hidden="true" />
                 </a>
               </div>
               <p className="project-type">{copy.type}</p>
