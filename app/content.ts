@@ -4,7 +4,7 @@ export const translations = {
     controls: { language: "Choose language", light: "Switch to light mode", dark: "Switch to dark mode" },
     nav: { aria: "Primary navigation", top: "Tri Do, back to top", work: "Work", experience: "Experience", skills: "Skills", about: "About", resume: "Résumé" },
     hero: {
-      eyebrow: "Junior Full-Stack Developer · Moncton, NB",
+      eyebrow: "Junior Full-Stack Developer | React · Next.js · TypeScript",
       title: "I build reliable products from interface to database.",
       lede: "Recent NBCC Software Development graduate with hands-on experience building React and Next.js interfaces, mobile apps, typed APIs, authentication, and database-backed workflows.",
       view: "View ShopPilot", download: "Download résumé",
@@ -75,7 +75,7 @@ export const translations = {
     controls: { language: "Choisir la langue", light: "Passer au mode clair", dark: "Passer au mode sombre" },
     nav: { aria: "Navigation principale", top: "Tri Do, retour en haut", work: "Projets", experience: "Expérience", skills: "Compétences", about: "À propos", resume: "CV" },
     hero: {
-      eyebrow: "Développeur full-stack junior · Moncton, N.-B.",
+      eyebrow: "Junior Full-Stack Developer | React · Next.js · TypeScript",
       title: "Je crée des produits fiables, de l’interface à la base de données.",
       lede: "Récemment diplômé en développement de logiciels au NBCC, avec une expérience pratique des interfaces React et Next.js, des applications mobiles, des API typées, de l’authentification et des flux soutenus par une base de données.",
       view: "Voir ShopPilot", download: "Télécharger le CV",
@@ -146,7 +146,7 @@ export const translations = {
     controls: { language: "Chọn ngôn ngữ", light: "Chuyển sang giao diện sáng", dark: "Chuyển sang giao diện tối" },
     nav: { aria: "Điều hướng chính", top: "Tri Do, về đầu trang", work: "Dự án", experience: "Kinh nghiệm", skills: "Kỹ năng", about: "Giới thiệu", resume: "CV" },
     hero: {
-      eyebrow: "Lập trình viên Full-Stack Junior · Moncton, NB",
+      eyebrow: "Junior Full-Stack Developer | React · Next.js · TypeScript",
       title: "Tôi xây dựng sản phẩm đáng tin cậy từ giao diện đến cơ sở dữ liệu.",
       lede: "Tân cử nhân ngành Phát triển Phần mềm tại NBCC, có kinh nghiệm thực tế với giao diện React và Next.js, ứng dụng di động, API có kiểu dữ liệu, xác thực và quy trình kết nối cơ sở dữ liệu.",
       view: "Xem ShopPilot", download: "Tải CV",
