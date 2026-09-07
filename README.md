@@ -13,17 +13,22 @@ This portfolio is designed to make technical evidence easy to scan. Instead of l
 The site highlights:
 
 - **ShopPilot** as the flagship product case study
-- Live product screenshots and implementation evidence
-- Authentication, database, API, storage, and analytics work
+- **ScheduleBooker** as a deployed full-stack Flask/PostgreSQL booking platform
+- Authentication, database, API, storage, analytics, security, and booking workflows
 - Full-stack Java/Spring and backend API projects
 - Professional internship experience at Beetech Solution LTD
 - NBCC Software Development education
-- Direct access to résumé, GitHub, LinkedIn, and project source code
+- Direct access to résumé, GitHub, LinkedIn, and live project links
 
 ## Featured Projects
 
 ### ShopPilot
 Cross-platform merchant operations platform built with React Native, TypeScript, Supabase, PostgreSQL, authentication, Row Level Security, storage, orders, inventory, and analytics.
+
+### ScheduleBooker
+Multilingual appointment-booking platform built with Python, Flask, PostgreSQL, Jinja, HTML/CSS/JavaScript, migrations, conflict-safe availability, audited cancellation, security controls, automated tests, and Render deployment.
+
+**Live:** https://schedulebooker-web.onrender.com/
 
 ### Restaurant Event Management
 Modular Java/Spring Boot application with MVC, Thymeleaf, MySQL, validation, search, archive workflows, REST APIs, and authentication.
@@ -33,12 +38,12 @@ Node.js/Express/MongoDB REST API with VIN validation, plate assignment/revocatio
 
 ## Stack
 
-- React
-- Next.js
-- TypeScript
-- Tailwind CSS
+- React / Next.js / TypeScript
 - Node.js / Express
+- Python / Flask
 - PostgreSQL / Supabase
+- MongoDB
+- Git / GitHub / Vercel
 
 ## Local Development
 
