@@ -35,7 +35,7 @@ const supportingProjects = [
   {
     number: "03",
     stack: ["Node.js", "Express", "TypeScript", "MongoDB"],
-    github: "https://github.com/dominhtri055/license-plate-assignment-api",
+    github: "https://github.com/dominhtri055/license-plate-assignment-api.git",
     accent: "blue",
   },
   {
