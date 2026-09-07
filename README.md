@@ -1,248 +1,64 @@
-# Tri Do Portfolio
+# Tri Do — Developer Portfolio
 
-A personal software developer portfolio built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
+**Junior Full-Stack Developer | React · Next.js · TypeScript**
 
-This portfolio is designed around the concept of **Skills in Action**. Instead of only listing technical skills, each skill connects directly to the projects where it was used.
+Recruiter-focused portfolio for **Tri Do**, based in Moncton, New Brunswick, Canada.
 
-## Live Demo
+**Live site:** https://tri-portfolio-pi.vercel.app/
 
-Portfolio: [tri-portfolio-pi.vercel.app/ ](https://tri-portfolio-pi.vercel.app)
+## Purpose
 
-GitHub: https://github.com/dominhtri055
+This portfolio is designed to make technical evidence easy to scan. Instead of listing every school exercise or technology I have used, it focuses on a smaller set of completed projects and the engineering decisions behind them.
 
-## About
+The site highlights:
 
-I am Tri Do, a recent Software Development graduate based in Moncton, NB. I focus on full-stack development, backend APIs, mobile applications, and database-driven projects.
-
-This portfolio highlights my practical development experience through real projects, including backend APIs, mobile applications, frontend JavaScript apps, and web applications.
-
-## Features
-
-- Modern dark purple theme
-- Interactive skill filtering
-- Skills connected to related projects
-- Project evidence cards
-- Work experience section
-- Resume download button
-- Responsive layout for desktop and mobile
-- Personal favicon/logo
-
-## Tech Stack
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- HTML
-- CSS
-- JavaScript
-
-## Main Concept
-
-The main idea of this portfolio is:
-
-```text
-Skill → Project Evidence
-```
-
-For example:
-
-- **Express.js** connects to the License Plate Assignment API
-- **MongoDB** connects to backend database projects
-- **React Native** connects to ShopPilot Mobile App
-- **Spring Boot** connects to Restaurant Event Management App
-- **JavaScript** connects to Tax Calculator App
-
-This helps recruiters see not only what technologies I know, but also how I used them in real projects.
+- **ShopPilot** as the flagship product case study
+- Live product screenshots and implementation evidence
+- Authentication, database, API, storage, and analytics work
+- Full-stack Java/Spring and backend API projects
+- Professional internship experience at Beetech Solution LTD
+- NBCC Software Development education
+- Direct access to résumé, GitHub, LinkedIn, and project source code
 
 ## Featured Projects
 
+### ShopPilot
+Cross-platform merchant operations platform built with React Native, TypeScript, Supabase, PostgreSQL, authentication, Row Level Security, storage, orders, inventory, and analytics.
+
+### Restaurant Event Management
+Modular Java/Spring Boot application with MVC, Thymeleaf, MySQL, validation, search, archive workflows, REST APIs, and authentication.
+
 ### License Plate Assignment API
+Node.js/Express/MongoDB REST API with VIN validation, plate assignment/revocation, API-key middleware, rate limiting, and structured error handling.
 
-A backend REST API for generating, assigning, verifying, and revoking Ontario-style license plates based on valid VIN numbers.
+## Stack
 
-**Tech used:**
-
-- Node.js
-- Express.js
+- React
+- Next.js
 - TypeScript
-- MongoDB
-- Mongoose
-- REST API
-- API key authentication
-- Postman
+- Tailwind CSS
+- Node.js / Express
+- PostgreSQL / Supabase
 
-**Repository:**  
-https://github.com/dominhtri055/COMP9784-87486-Final-Project
-
----
-
-### ShopPilot Mobile App
-
-A mobile app built with React Native and Expo Router, including session checking, login redirect flow, and dashboard navigation.
-
-**Tech used:**
-
-- React Native
-- Expo
-- Expo Router
-- TypeScript
-- AsyncStorage
-- Mobile UI
-
-**Repository:**  
-https://github.com/dominhtri055/shoppilot-mobile
-
----
-
-### Restaurant Event Management App
-
-A Spring Boot web application for managing restaurant events with CRUD operations, validation, search filters, and archive logic.
-
-**Tech used:**
-
-- Java
-- Spring Boot
-- MySQL
-- Thymeleaf
-- MVC
-- CRUD
-- Validation
-
-**Repository:**  
-https://github.com/dominhtri055/restaurant-event-app
-
----
-
-### Tax Calculator App
-
-A frontend JavaScript app that calculates federal and provincial taxes based on user income.
-
-**Tech used:**
-
-- HTML
-- CSS
-- JavaScript
-- DOM Manipulation
-- Forms
-- Validation
-- Fetch API
-
-**Repository:**  
-https://github.com/dominhtri055/tax-calculator
-
----
-
-### Local Business Website Demo
-
-A planned WordPress and SEO-focused website demo for local business use cases.
-
-**Tech used:**
-
-- WordPress
-- SEO
-- HTML
-- CSS
-- Responsive Design
-- Figma
-
-## Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/dominhtri055/tri-portfolio.git
-cd tri-portfolio
-```
-
-### 2. Install dependencies
+## Local Development
 
 ```bash
 npm install
-```
-
-### 3. Run the development server
-
-```bash
 npm run dev
 ```
 
-Open the project in your browser:
+Open `http://localhost:3000`.
 
-```text
-http://localhost:3000
-```
-
-## Build for Production
+## Quality Checks
 
 ```bash
+npm run lint
 npm run build
 ```
 
-Then run the production server:
+## Links
 
-```bash
-npm start
-```
-
-## Project Structure
-
-```text
-tri-portfolio/
-├── app/
-│   ├── api/
-│   │   └── resume/
-│   │       └── route.ts
-│   ├── favicon.ico
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-├── public/
-│   └── resume.pdf
-├── README.md
-├── package.json
-├── postcss.config.mjs
-├── next.config.ts
-└── tsconfig.json
-```
-
-## Resume Download
-
-The portfolio includes a resume download button.
-
-The resume file should be placed at:
-
-```text
-public/resume.pdf
-```
-
-If using the API download route, the resume is served from:
-
-```text
-/app/api/resume/route.ts
-```
-
-## Deployment
-
-This project is intended to be deployed on **Vercel**.
-
-After pushing to GitHub:
-
-1. Go to Vercel
-2. Import the GitHub repository
-3. Select Next.js as the framework
-4. Deploy
-
-Every push to the main branch will automatically trigger a new deployment.
-
-## Contact
-
-**Tri Do**
-
+- Portfolio: https://tri-portfolio-pi.vercel.app/
 - GitHub: https://github.com/dominhtri055
 - LinkedIn: https://www.linkedin.com/in/trido2908/
-- Email: dominhtri055@gmail.com
-
-## License
-
-This project is for personal portfolio use.
+- Email: mailto:dominhtri055@gmail.com

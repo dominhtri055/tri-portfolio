@@ -12,16 +12,47 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const preferenceScript = `
+  try {
+    const savedTheme = localStorage.getItem("tri-theme");
+    const theme = savedTheme === "light" || savedTheme === "dark"
+      ? savedTheme
+      : (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    const savedLanguage = localStorage.getItem("tri-language");
+    document.documentElement.dataset.theme = theme;
+    if (["en", "fr", "vi"].includes(savedLanguage)) document.documentElement.lang = savedLanguage;
+  } catch {}
+`;
+
 export const metadata: Metadata = {
-  title: "Tri Do | Software Developer Portfolio",
+  metadataBase: new URL("https://tri-portfolio-pi.vercel.app"),
+  title: "Tri Do | Junior Full-Stack Developer | React · Next.js · TypeScript",
   description:
-    "Portfolio of Tri Do, a Moncton-based web and mobile developer building React, Next.js, React Native, backend API, and database-driven projects.",
+    "Portfolio of Tri Do, a Moncton-based Junior Full-Stack Developer focused on React, Next.js, and TypeScript, with experience across APIs, authentication, and database-backed products.",
+  keywords: [
+    "Tri Do",
+    "Junior Full-Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "Moncton Software Developer",
+  ],
+  authors: [{ name: "Tri Do", url: "https://github.com/dominhtri055" }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Tri Do | Software Developer Portfolio",
+    title: "Tri Do | Junior Full-Stack Developer | React · Next.js · TypeScript",
     description:
-      "Web, mobile, and backend projects by Tri Do, a Software Development graduate based in Moncton, NB.",
+      "Selected React, Next.js, TypeScript, mobile, API, and backend engineering work by Tri Do in Moncton, NB.",
     type: "website",
+    url: "/",
+    siteName: "Tri Do Portfolio",
   },
+  twitter: {
+    card: "summary",
+    title: "Tri Do | Junior Full-Stack Developer | React · Next.js · TypeScript",
+    description: "Selected React, Next.js, TypeScript, mobile, API, and backend engineering work by Tri Do.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -30,7 +61,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: preferenceScript }} />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
