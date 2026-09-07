@@ -1,6 +1,8 @@
 # Tri Do — Developer Portfolio
 
-Recruiter-focused portfolio for **Tri Do**, a junior full-stack developer based in Moncton, New Brunswick, Canada.
+**Junior Full-Stack Developer | React · Next.js · TypeScript**
+
+Recruiter-focused portfolio for **Tri Do**, based in Moncton, New Brunswick, Canada.
 
 **Live site:** https://tri-portfolio-pi.vercel.app/
 
@@ -31,11 +33,12 @@ Node.js/Express/MongoDB REST API with VIN validation, plate assignment/revocatio
 
 ## Stack
 
-- Next.js
 - React
+- Next.js
 - TypeScript
 - Tailwind CSS
-- React Icons
+- Node.js / Express
+- PostgreSQL / Supabase
 
 ## Local Development
 
