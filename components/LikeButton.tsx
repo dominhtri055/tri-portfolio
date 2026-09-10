@@ -46,9 +46,6 @@ export default function LikeButton() {
     setLanguage(getPageLanguage());
     setLiked(window.localStorage.getItem(LIKED_STORAGE_KEY) === "true");
 
-    const savedCount = getSavedCount();
-    if (savedCount !== null) setLikes(savedCount);
-
     const languageObserver = new MutationObserver(() => {
       setLanguage(getPageLanguage());
     });
@@ -57,31 +54,47 @@ export default function LikeButton() {
       attributeFilter: ["lang"],
     });
 
-    const controller = new AbortController();
+    const fetchLikes = async () => {
+      try {
+        const response = await fetch(`${API_ENDPOINT}?t=${Date.now()}`, {
+          cache: "no-store",
+          headers: {
+            "Cache-Control": "no-cache, no-store, max-age=0",
+            Pragma: "no-cache",
+          },
+        });
 
-    fetch(`${API_ENDPOINT}?t=${Date.now()}`, {
-      cache: "no-store",
-      signal: controller.signal,
-    })
-      .then((response) => {
         if (!response.ok) throw new Error("Unable to load likes");
-        return response.json() as Promise<CounterResponse>;
-      })
-      .then((data) => {
+
+        const data = (await response.json()) as CounterResponse;
         if (typeof data.value !== "number") throw new Error("Invalid like count");
 
+        // The server is the source of truth so every device shows the same number.
         setLikes(data.value);
         saveCount(data.value);
         setLoadFailed(false);
-      })
-      .catch((error: unknown) => {
-        if (error instanceof DOMException && error.name === "AbortError") return;
-        setLoadFailed(savedCount === null);
-      });
+      } catch {
+        // Only use the local value as a network-error fallback.
+        const savedCount = getSavedCount();
+        if (savedCount !== null) setLikes(savedCount);
+        setLoadFailed(true);
+      }
+    };
+
+    void fetchLikes();
+
+    const refreshOnFocus = () => void fetchLikes();
+    const refreshOnVisibility = () => {
+      if (document.visibilityState === "visible") void fetchLikes();
+    };
+
+    window.addEventListener("focus", refreshOnFocus);
+    document.addEventListener("visibilitychange", refreshOnVisibility);
 
     return () => {
-      controller.abort();
       languageObserver.disconnect();
+      window.removeEventListener("focus", refreshOnFocus);
+      document.removeEventListener("visibilitychange", refreshOnVisibility);
     };
   }, []);
 
@@ -91,9 +104,13 @@ export default function LikeButton() {
     setSubmitting(true);
 
     try {
-      const response = await fetch(API_ENDPOINT, {
+      const response = await fetch(`${API_ENDPOINT}?t=${Date.now()}`, {
         method: "POST",
         cache: "no-store",
+        headers: {
+          "Cache-Control": "no-cache, no-store, max-age=0",
+          Pragma: "no-cache",
+        },
       });
 
       if (!response.ok) throw new Error("Unable to submit like");
