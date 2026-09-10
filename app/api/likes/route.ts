@@ -3,8 +3,9 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-const COUNTER_ENDPOINT =
-  "https://counterapi.com/api/tri-portfolio-pi.vercel.app/like/portfolio";
+const ABACUS_BASE = "https://abacus.jasoncameron.dev";
+const NAMESPACE = "tri-portfolio-pi.vercel.app";
+const KEY = "portfolio-likes-v2";
 
 const noStoreHeaders = {
   "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
@@ -12,29 +13,9 @@ const noStoreHeaders = {
   Expires: "0",
 };
 
-async function readCounter(increment: boolean) {
-  const url = new URL(COUNTER_ENDPOINT);
-
-  if (!increment) url.searchParams.set("readOnly", "true");
-  url.searchParams.set("_", `${Date.now()}-${crypto.randomUUID()}`);
-
-  const response = await fetch(url, {
-    cache: "no-store",
-    headers: noStoreHeaders,
-  });
-
-  if (!response.ok) {
-    throw new Error(`CounterAPI returned ${response.status}`);
-  }
-
-  const data = (await response.json()) as { value?: number };
-
-  if (typeof data.value !== "number" || !Number.isFinite(data.value)) {
-    throw new Error("CounterAPI returned an invalid count");
-  }
-
-  return data.value;
-}
+type CounterResponse = {
+  value?: number;
+};
 
 function json(value: number, status = 200) {
   return NextResponse.json(
@@ -46,9 +27,33 @@ function json(value: number, status = 200) {
   );
 }
 
+async function requestCounter(mode: "get" | "hit") {
+  const url = `${ABACUS_BASE}/${mode}/${NAMESPACE}/${KEY}`;
+
+  const response = await fetch(url, {
+    cache: "no-store",
+    headers: noStoreHeaders,
+  });
+
+  // A counter does not exist until the first hit. Treat that as zero on reads.
+  if (mode === "get" && response.status === 404) return 0;
+
+  if (!response.ok) {
+    throw new Error(`Abacus returned ${response.status}`);
+  }
+
+  const data = (await response.json()) as CounterResponse;
+
+  if (typeof data.value !== "number" || !Number.isFinite(data.value)) {
+    throw new Error("Abacus returned an invalid count");
+  }
+
+  return data.value;
+}
+
 export async function GET() {
   try {
-    return json(await readCounter(false));
+    return json(await requestCounter("get"));
   } catch {
     return json(0, 502);
   }
@@ -56,9 +61,8 @@ export async function GET() {
 
 export async function POST() {
   try {
-    // A plain CounterAPI request increments the persistent counter.
-    // The browser can only reach this path after an explicit Like click.
-    return json(await readCounter(true));
+    // /hit increments atomically and immediately returns the new global value.
+    return json(await requestCounter("hit"));
   } catch {
     return json(0, 502);
   }
