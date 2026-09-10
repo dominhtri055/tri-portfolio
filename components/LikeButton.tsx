@@ -6,9 +6,14 @@ import styles from "./LikeButton.module.css";
 
 type Language = "en" | "fr" | "vi";
 
+type CounterResponse = {
+  value?: number;
+};
+
 const COUNTER_ENDPOINT =
   "https://counterapi.com/api/tri-portfolio-pi.vercel.app/like/portfolio";
 const LIKED_STORAGE_KEY = "tri-portfolio-liked";
+const LAST_COUNT_STORAGE_KEY = "tri-portfolio-like-count";
 
 const copy = {
   en: { like: "Like", liked: "Thanks!", unavailable: "Likes unavailable" },
@@ -19,6 +24,24 @@ const copy = {
 function getPageLanguage(): Language {
   const language = document.documentElement.lang;
   return language === "fr" || language === "vi" ? language : "en";
+}
+
+function getSavedCount() {
+  const saved = Number(window.localStorage.getItem(LAST_COUNT_STORAGE_KEY));
+  return Number.isFinite(saved) && saved >= 0 ? saved : null;
+}
+
+function saveCount(value: number) {
+  window.localStorage.setItem(LAST_COUNT_STORAGE_KEY, String(value));
+}
+
+function counterUrl(params: Record<string, string>) {
+  const search = new URLSearchParams({
+    ...params,
+    _: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+  });
+
+  return `${COUNTER_ENDPOINT}?${search.toString()}`;
 }
 
 export default function LikeButton() {
@@ -33,6 +56,9 @@ export default function LikeButton() {
     setLanguage(getPageLanguage());
     setLiked(window.localStorage.getItem(LIKED_STORAGE_KEY) === "true");
 
+    const savedCount = getSavedCount();
+    if (savedCount !== null) setLikes(savedCount);
+
     const languageObserver = new MutationObserver(() => {
       setLanguage(getPageLanguage());
     });
@@ -43,23 +69,32 @@ export default function LikeButton() {
 
     const controller = new AbortController();
 
-    fetch(`${COUNTER_ENDPOINT}?readOnly=true`, {
+    fetch(counterUrl({ readOnly: "true" }), {
       cache: "no-store",
+      headers: {
+        "Cache-Control": "no-cache, no-store, max-age=0",
+        Pragma: "no-cache",
+      },
       signal: controller.signal,
     })
       .then((response) => {
         if (!response.ok) throw new Error("Unable to load likes");
-        return response.json() as Promise<{ value?: number }>;
+        return response.json() as Promise<CounterResponse>;
       })
       .then((data) => {
-        if (typeof data.value === "number") {
-          setLikes(data.value);
-          setLoadFailed(false);
+        if (typeof data.value !== "number") {
+          throw new Error("Invalid like count");
         }
+
+        // Never replace a newer locally-observed count with a stale cached API response.
+        const nextCount = savedCount === null ? data.value : Math.max(savedCount, data.value);
+        setLikes(nextCount);
+        saveCount(nextCount);
+        setLoadFailed(false);
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === "AbortError") return;
-        setLoadFailed(true);
+        setLoadFailed(savedCount === null);
       });
 
     return () => {
@@ -74,15 +109,24 @@ export default function LikeButton() {
     setSubmitting(true);
 
     try {
-      const response = await fetch(`${COUNTER_ENDPOINT}?behavior=vote`, {
+      const response = await fetch(counterUrl({ behavior: "vote" }), {
         cache: "no-store",
+        headers: {
+          "Cache-Control": "no-cache, no-store, max-age=0",
+          Pragma: "no-cache",
+        },
       });
 
       if (!response.ok) throw new Error("Unable to submit like");
 
-      const data = (await response.json()) as { value?: number };
-      if (typeof data.value === "number") setLikes(data.value);
+      const data = (await response.json()) as CounterResponse;
+      if (typeof data.value !== "number") throw new Error("Invalid like count");
 
+      const currentCount = likes ?? getSavedCount() ?? 0;
+      const nextCount = Math.max(data.value, currentCount + 1);
+
+      setLikes(nextCount);
+      saveCount(nextCount);
       window.localStorage.setItem(LIKED_STORAGE_KEY, "true");
       setLiked(true);
       setLoadFailed(false);
