@@ -1,0 +1,167 @@
+.wrap {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.button {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 10px;
+  border: 1px solid rgba(199, 163, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(14, 13, 28, 0.82);
+  color: #f8f6ff;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28), inset 0 1px rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover:not(:disabled),
+.button:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(238, 139, 246, 0.62);
+  background: rgba(23, 18, 42, 0.94);
+  box-shadow: 0 18px 48px rgba(157, 108, 255, 0.22), inset 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.button:disabled {
+  cursor: default;
+}
+
+.icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(168, 117, 255, 0.24), rgba(230, 124, 240, 0.18));
+  color: #ef9cf6;
+  box-shadow: inset 0 0 0 1px rgba(238, 139, 246, 0.15);
+}
+
+.icon svg {
+  width: 17px;
+  height: 17px;
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+
+.button:hover:not(:disabled) .icon svg {
+  transform: scale(1.12);
+}
+
+.liked .icon {
+  background: linear-gradient(135deg, #a875ff, #e67cf0);
+  color: #160d22;
+  box-shadow: 0 0 28px rgba(230, 124, 240, 0.25);
+}
+
+.liked .icon svg {
+  fill: currentColor;
+  animation: heartPop 0.46s cubic-bezier(0.2, 0.85, 0.3, 1.35);
+}
+
+.count {
+  min-width: 1ch;
+  font: 800 14px/1 var(--font-geist-mono), monospace;
+  letter-spacing: -0.03em;
+}
+
+.label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  color: #bdb7c9;
+  font-size: 12px;
+  font-weight: 700;
+  transition: max-width 0.28s ease, opacity 0.2s ease;
+}
+
+.button:hover .label,
+.button:focus-visible .label,
+.liked .label {
+  max-width: 170px;
+  opacity: 1;
+}
+
+.status {
+  min-height: 14px;
+  padding-right: 8px;
+  color: #8e889b;
+  font: 600 10px/1.2 var(--font-geist-mono), monospace;
+}
+
+@keyframes heartPop {
+  0% { transform: scale(0.82); }
+  55% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+
+:global(html[data-theme="light"]) .button {
+  border-color: rgba(75, 43, 124, 0.18);
+  background: rgba(255, 255, 255, 0.84);
+  color: #261d32;
+  box-shadow: 0 14px 38px rgba(65, 43, 96, 0.14), inset 0 1px white;
+}
+
+:global(html[data-theme="light"]) .button:hover:not(:disabled),
+:global(html[data-theme="light"]) .button:focus-visible {
+  border-color: rgba(113, 66, 214, 0.4);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+:global(html[data-theme="light"]) .label {
+  color: #625d6d;
+}
+
+:global(html[data-theme="light"]) .status {
+  color: #777080;
+}
+
+@media (max-width: 760px) {
+  .wrap {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .button {
+    min-height: 46px;
+    padding: 6px 12px 6px 7px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .label {
+    display: none;
+  }
+
+  .status {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .icon svg,
+  .label {
+    transition: none;
+  }
+
+  .liked .icon svg {
+    animation: none;
+  }
+}
