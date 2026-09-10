@@ -2,45 +2,27 @@
 
 import { useEffect, useState } from "react";
 import { FiHeart } from "react-icons/fi";
+import styles from "./LikeButton.module.css";
 
 type Language = "en" | "fr" | "vi";
-
-type LikeButtonProps = {
-  language: Language;
-};
 
 const COUNTER_ENDPOINT =
   "https://counterapi.com/api/tri-portfolio-pi.vercel.app/like/portfolio";
 const LIKED_STORAGE_KEY = "tri-portfolio-liked";
 
 const copy = {
-  en: {
-    eyebrow: "A little signal",
-    title: "Enjoyed my portfolio?",
-    text: "If something here caught your attention, leave a like.",
-    like: "Like this portfolio",
-    liked: "Thanks for the support!",
-    loading: "Loading likes",
-  },
-  fr: {
-    eyebrow: "Un petit signal",
-    title: "Vous avez aimé mon portfolio ?",
-    text: "Si quelque chose ici a retenu votre attention, laissez un like.",
-    like: "Aimer ce portfolio",
-    liked: "Merci pour votre soutien !",
-    loading: "Chargement des likes",
-  },
-  vi: {
-    eyebrow: "Một chút tương tác",
-    title: "Bạn thích portfolio này?",
-    text: "Nếu có điều gì ở đây khiến bạn ấn tượng, hãy thả một tim nhé.",
-    like: "Thả tim cho portfolio",
-    liked: "Cảm ơn bạn đã ủng hộ!",
-    loading: "Đang tải lượt thích",
-  },
+  en: { like: "Like", liked: "Thanks!", unavailable: "Likes unavailable" },
+  fr: { like: "J’aime", liked: "Merci !", unavailable: "Likes indisponibles" },
+  vi: { like: "Thả tim", liked: "Cảm ơn!", unavailable: "Chưa tải được lượt thích" },
 } as const;
 
-export default function LikeButton({ language }: LikeButtonProps) {
+function getPageLanguage(): Language {
+  const language = document.documentElement.lang;
+  return language === "fr" || language === "vi" ? language : "en";
+}
+
+export default function LikeButton() {
+  const [language, setLanguage] = useState<Language>("en");
   const [likes, setLikes] = useState<number | null>(null);
   const [liked, setLiked] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -48,7 +30,16 @@ export default function LikeButton({ language }: LikeButtonProps) {
   const t = copy[language];
 
   useEffect(() => {
+    setLanguage(getPageLanguage());
     setLiked(window.localStorage.getItem(LIKED_STORAGE_KEY) === "true");
+
+    const languageObserver = new MutationObserver(() => {
+      setLanguage(getPageLanguage());
+    });
+    languageObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+    });
 
     const controller = new AbortController();
 
@@ -71,7 +62,10 @@ export default function LikeButton({ language }: LikeButtonProps) {
         setLoadFailed(true);
       });
 
-    return () => controller.abort();
+    return () => {
+      controller.abort();
+      languageObserver.disconnect();
+    };
   }, []);
 
   const handleLike = async () => {
@@ -100,40 +94,29 @@ export default function LikeButton({ language }: LikeButtonProps) {
   };
 
   const countLabel = likes === null ? "—" : likes.toLocaleString();
+  const label = liked ? t.liked : t.like;
 
   return (
-    <section className="like-section section-shell" aria-labelledby="portfolio-like-title">
-      <div className="like-card">
-        <div className="like-copy">
-          <p className="section-kicker">{t.eyebrow}</p>
-          <h2 id="portfolio-like-title">{t.title}</h2>
-          <p>{t.text}</p>
-        </div>
+    <div className={styles.wrap}>
+      <button
+        className={`${styles.button}${liked ? ` ${styles.liked}` : ""}`}
+        type="button"
+        onClick={handleLike}
+        disabled={liked || submitting}
+        aria-pressed={liked}
+        aria-label={`${label}. ${likes ?? 0} likes.`}
+        title={label}
+      >
+        <span className={styles.icon} aria-hidden="true">
+          <FiHeart />
+        </span>
+        <span className={styles.count} aria-live="polite">
+          {countLabel}
+        </span>
+        <span className={styles.label}>{submitting ? "…" : label}</span>
+      </button>
 
-        <div className="like-action-wrap">
-          <button
-            className={`like-button${liked ? " liked" : ""}`}
-            type="button"
-            onClick={handleLike}
-            disabled={liked || submitting}
-            aria-pressed={liked}
-            aria-label={`${liked ? t.liked : t.like}. ${likes ?? 0} likes.`}
-          >
-            <span className="like-icon" aria-hidden="true">
-              <FiHeart />
-            </span>
-            <span className="like-count" aria-live="polite">
-              {countLabel}
-            </span>
-            <span className="like-label">
-              {submitting ? "…" : liked ? t.liked : t.like}
-            </span>
-          </button>
-          <span className="like-status" aria-live="polite">
-            {likes === null && !loadFailed ? t.loading : loadFailed ? "" : `${countLabel} likes`}
-          </span>
-        </div>
-      </div>
-    </section>
+      {loadFailed && <span className={styles.status}>{t.unavailable}</span>}
+    </div>
   );
 }
