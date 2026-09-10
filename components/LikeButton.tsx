@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiHeart } from "react-icons/fi";
 import styles from "./LikeButton.module.css";
 
@@ -8,13 +8,13 @@ type Language = "en" | "fr" | "vi";
 type CounterResponse = { value?: number };
 
 const API_ENDPOINT = "/api/likes";
-const LIKED_STORAGE_KEY = "tri-portfolio-liked";
 const LAST_COUNT_STORAGE_KEY = "tri-portfolio-like-count";
+const OLD_LIKED_STORAGE_KEY = "tri-portfolio-liked";
 
 const copy = {
-  en: { like: "Like", liked: "Thanks!", unavailable: "Likes unavailable" },
-  fr: { like: "J’aime", liked: "Merci !", unavailable: "Likes indisponibles" },
-  vi: { like: "Thả tim", liked: "Cảm ơn!", unavailable: "Chưa tải được lượt thích" },
+  en: { like: "Like", unavailable: "Likes unavailable" },
+  fr: { like: "J’aime", unavailable: "Likes indisponibles" },
+  vi: { like: "Thả tim", unavailable: "Chưa tải được lượt thích" },
 } as const;
 
 function getPageLanguage(): Language {
@@ -37,14 +37,16 @@ function saveCount(value: number) {
 export default function LikeButton() {
   const [language, setLanguage] = useState<Language>("en");
   const [likes, setLikes] = useState<number | null>(null);
-  const [liked, setLiked] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
   const [loadFailed, setLoadFailed] = useState(false);
+  const [pulse, setPulse] = useState(false);
+  const pulseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const t = copy[language];
 
   useEffect(() => {
     setLanguage(getPageLanguage());
-    setLiked(window.localStorage.getItem(LIKED_STORAGE_KEY) === "true");
+
+    // Remove the old one-like-per-browser lock from previous versions.
+    window.localStorage.removeItem(OLD_LIKED_STORAGE_KEY);
 
     const languageObserver = new MutationObserver(() => {
       setLanguage(getPageLanguage());
@@ -69,12 +71,10 @@ export default function LikeButton() {
         const data = (await response.json()) as CounterResponse;
         if (typeof data.value !== "number") throw new Error("Invalid like count");
 
-        // The server is the source of truth so every device shows the same number.
         setLikes(data.value);
         saveCount(data.value);
         setLoadFailed(false);
       } catch {
-        // Only use the local value as a network-error fallback.
         const savedCount = getSavedCount();
         if (savedCount !== null) setLikes(savedCount);
         setLoadFailed(true);
@@ -95,60 +95,66 @@ export default function LikeButton() {
       languageObserver.disconnect();
       window.removeEventListener("focus", refreshOnFocus);
       document.removeEventListener("visibilitychange", refreshOnVisibility);
+      if (pulseTimer.current) clearTimeout(pulseTimer.current);
     };
   }, []);
 
-  const handleLike = async () => {
-    if (liked || submitting) return;
+  const handleLike = () => {
+    // Optimistic UI: every tap immediately adds one locally.
+    setLikes((current) => (current ?? 0) + 1);
 
-    setSubmitting(true);
+    // Restart the heart animation on every click.
+    setPulse(false);
+    requestAnimationFrame(() => setPulse(true));
+    if (pulseTimer.current) clearTimeout(pulseTimer.current);
+    pulseTimer.current = setTimeout(() => setPulse(false), 420);
 
-    try {
-      const response = await fetch(`${API_ENDPOINT}?t=${Date.now()}`, {
-        method: "POST",
-        cache: "no-store",
-        headers: {
-          "Cache-Control": "no-cache, no-store, max-age=0",
-          Pragma: "no-cache",
-        },
+    // Every click sends its own atomic +1 request, so rapid repeated clicks are allowed.
+    void fetch(`${API_ENDPOINT}?t=${Date.now()}-${Math.random()}`, {
+      method: "POST",
+      cache: "no-store",
+      headers: {
+        "Cache-Control": "no-cache, no-store, max-age=0",
+        Pragma: "no-cache",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Unable to submit like");
+        return response.json() as Promise<CounterResponse>;
+      })
+      .then((data) => {
+        if (typeof data.value !== "number") throw new Error("Invalid like count");
+
+        // Responses can arrive out of order during spam-clicking; never let an older
+        // response move the displayed number backwards.
+        setLikes((current) => {
+          const next = current === null ? data.value! : Math.max(current, data.value!);
+          saveCount(next);
+          return next;
+        });
+        setLoadFailed(false);
+      })
+      .catch(() => {
+        setLoadFailed(true);
       });
-
-      if (!response.ok) throw new Error("Unable to submit like");
-
-      const data = (await response.json()) as CounterResponse;
-      if (typeof data.value !== "number") throw new Error("Invalid like count");
-
-      setLikes(data.value);
-      saveCount(data.value);
-      window.localStorage.setItem(LIKED_STORAGE_KEY, "true");
-      setLiked(true);
-      setLoadFailed(false);
-    } catch {
-      setLoadFailed(true);
-    } finally {
-      setSubmitting(false);
-    }
   };
 
   const countLabel = likes === null ? "—" : likes.toLocaleString();
-  const label = liked ? t.liked : t.like;
 
   return (
     <div className={styles.wrap}>
       <button
-        className={`${styles.button}${liked ? ` ${styles.liked}` : ""}`}
+        className={`${styles.button}${pulse ? ` ${styles.liked}` : ""}`}
         type="button"
         onClick={handleLike}
-        disabled={liked || submitting}
-        aria-pressed={liked}
-        aria-label={`${label}. ${likes ?? 0} likes.`}
-        title={label}
+        aria-label={`${t.like}. ${likes ?? 0} likes.`}
+        title={t.like}
       >
         <span className={styles.icon} aria-hidden="true">
           <FiHeart />
         </span>
         <span className={styles.count} aria-live="polite">{countLabel}</span>
-        <span className={styles.label}>{submitting ? "…" : label}</span>
+        <span className={styles.label}>{t.like}</span>
       </button>
 
       {loadFailed && <span className={styles.status}>{t.unavailable}</span>}
