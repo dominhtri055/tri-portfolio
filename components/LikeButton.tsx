@@ -5,13 +5,9 @@ import { FiHeart } from "react-icons/fi";
 import styles from "./LikeButton.module.css";
 
 type Language = "en" | "fr" | "vi";
+type CounterResponse = { value?: number };
 
-type CounterResponse = {
-  value?: number;
-};
-
-const COUNTER_ENDPOINT =
-  "https://counterapi.com/api/tri-portfolio-pi.vercel.app/like/portfolio";
+const API_ENDPOINT = "/api/likes";
 const LIKED_STORAGE_KEY = "tri-portfolio-liked";
 const LAST_COUNT_STORAGE_KEY = "tri-portfolio-like-count";
 
@@ -27,21 +23,15 @@ function getPageLanguage(): Language {
 }
 
 function getSavedCount() {
-  const saved = Number(window.localStorage.getItem(LAST_COUNT_STORAGE_KEY));
+  const raw = window.localStorage.getItem(LAST_COUNT_STORAGE_KEY);
+  if (raw === null) return null;
+
+  const saved = Number(raw);
   return Number.isFinite(saved) && saved >= 0 ? saved : null;
 }
 
 function saveCount(value: number) {
   window.localStorage.setItem(LAST_COUNT_STORAGE_KEY, String(value));
-}
-
-function counterUrl(params: Record<string, string>) {
-  const search = new URLSearchParams({
-    ...params,
-    _: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
-  });
-
-  return `${COUNTER_ENDPOINT}?${search.toString()}`;
 }
 
 export default function LikeButton() {
@@ -69,12 +59,8 @@ export default function LikeButton() {
 
     const controller = new AbortController();
 
-    fetch(counterUrl({ readOnly: "true" }), {
+    fetch(`${API_ENDPOINT}?t=${Date.now()}`, {
       cache: "no-store",
-      headers: {
-        "Cache-Control": "no-cache, no-store, max-age=0",
-        Pragma: "no-cache",
-      },
       signal: controller.signal,
     })
       .then((response) => {
@@ -82,14 +68,10 @@ export default function LikeButton() {
         return response.json() as Promise<CounterResponse>;
       })
       .then((data) => {
-        if (typeof data.value !== "number") {
-          throw new Error("Invalid like count");
-        }
+        if (typeof data.value !== "number") throw new Error("Invalid like count");
 
-        // Never replace a newer locally-observed count with a stale cached API response.
-        const nextCount = savedCount === null ? data.value : Math.max(savedCount, data.value);
-        setLikes(nextCount);
-        saveCount(nextCount);
+        setLikes(data.value);
+        saveCount(data.value);
         setLoadFailed(false);
       })
       .catch((error: unknown) => {
@@ -109,12 +91,9 @@ export default function LikeButton() {
     setSubmitting(true);
 
     try {
-      const response = await fetch(counterUrl({ behavior: "vote" }), {
+      const response = await fetch(API_ENDPOINT, {
+        method: "POST",
         cache: "no-store",
-        headers: {
-          "Cache-Control": "no-cache, no-store, max-age=0",
-          Pragma: "no-cache",
-        },
       });
 
       if (!response.ok) throw new Error("Unable to submit like");
@@ -122,11 +101,8 @@ export default function LikeButton() {
       const data = (await response.json()) as CounterResponse;
       if (typeof data.value !== "number") throw new Error("Invalid like count");
 
-      const currentCount = likes ?? getSavedCount() ?? 0;
-      const nextCount = Math.max(data.value, currentCount + 1);
-
-      setLikes(nextCount);
-      saveCount(nextCount);
+      setLikes(data.value);
+      saveCount(data.value);
       window.localStorage.setItem(LIKED_STORAGE_KEY, "true");
       setLiked(true);
       setLoadFailed(false);
@@ -154,9 +130,7 @@ export default function LikeButton() {
         <span className={styles.icon} aria-hidden="true">
           <FiHeart />
         </span>
-        <span className={styles.count} aria-live="polite">
-          {countLabel}
-        </span>
+        <span className={styles.count} aria-live="polite">{countLabel}</span>
         <span className={styles.label}>{submitting ? "…" : label}</span>
       </button>
 
