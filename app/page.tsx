@@ -28,22 +28,33 @@ const shotSources = [
 const supportingProjects = [
   {
     number: "02",
+    id: "shoppilot-storefront",
+    stack: ["Next.js", "React", "TypeScript", "Supabase"],
+    href: "https://github.com/dominhtri055/shoppilot-storefront",
+    kind: "github",
+    accent: "violet",
+  },
+  {
+    number: "03",
+    id: "schedulebooker",
     stack: ["Python", "Flask", "PostgreSQL", "JavaScript"],
     href: "https://schedulebooker-web.onrender.com/",
     kind: "live",
     accent: "violet",
   },
   {
-    number: "03",
+    number: "04",
+    id: "restaurant-events",
     stack: ["Java", "Spring Boot", "Thymeleaf", "MySQL"],
     href: "https://github.com/dominhtri055/restaurant-event-app",
     kind: "github",
     accent: "blue",
   },
   {
-    number: "04",
+    number: "05",
+    id: "license-plate-api",
     stack: ["Node.js", "Express", "MongoDB", "Mongoose"],
-    href: "https://github.com/dominhtri055/license-plate-assignment-api.git",
+    href: "https://github.com/dominhtri055/license-plate-assignment-api",
     kind: "github",
     accent: "pink",
   },
@@ -256,6 +267,9 @@ export default function HomePage() {
               <FiDownload aria-hidden="true" /> {t.hero.download}
             </a>
           </div>
+          <a className="resume-alternate" href="/resume-front-end.pdf" target="_blank" rel="noreferrer">
+            {t.hero.frontEndResume} <FiArrowUpRight aria-hidden="true" />
+          </a>
 
           <div className="hero-meta" aria-label={t.hero.locationAria}>
             <span><FiMapPin aria-hidden="true" /> {t.hero.location}</span>
@@ -284,7 +298,7 @@ export default function HomePage() {
           <div className="proof-stack">
             <span>React Native</span><span>TypeScript</span><span>Supabase</span>
           </div>
-          <a href="https://github.com/dominhtri055/shoppilot-mobile" target="_blank" rel="noreferrer">
+          <a href="https://github.com/dominhtri055/shoppilot-mobile#architecture" target="_blank" rel="noreferrer">
             {t.proof.caseStudy} <FiArrowUpRight aria-hidden="true" />
           </a>
         </aside>
@@ -293,7 +307,7 @@ export default function HomePage() {
       <section className="signal-strip" aria-label={t.highlights.aria}>
         <div className="section-shell signal-grid">
           <div><strong>01</strong><span>{t.highlights.internship}</span></div>
-          <div><strong>04</strong><span>{t.highlights.projects}</span></div>
+          <div><strong>{String(supportingProjects.length + 1).padStart(2, "0")}</strong><span>{t.highlights.projects}</span></div>
           <div><strong>Web · Mobile · API</strong><span>{t.highlights.experience}</span></div>
         </div>
       </section>
@@ -318,13 +332,17 @@ export default function HomePage() {
             <p className="project-summary">{t.work.summary}</p>
 
             <div className="project-links">
-              <a className="button button-primary" href="https://shoppilot-mobile.vercel.app/login" target="_blank" rel="noreferrer">
+              <a className="button button-primary" href="#shoppilot-preview">
+                {t.work.preview} <FiArrowDown aria-hidden="true" />
+              </a>
+              <a className="button button-secondary" href="https://shoppilot-mobile.vercel.app/login" target="_blank" rel="noreferrer">
                 {t.work.live} <FiArrowUpRight aria-hidden="true" />
               </a>
               <a className="button button-secondary" href="https://github.com/dominhtri055/shoppilot-mobile" target="_blank" rel="noreferrer">
                 <FiGithub aria-hidden="true" /> {t.work.source}
               </a>
             </div>
+            <p className="project-access-note">{t.work.loginNote}</p>
 
             <div className="engineering-list">
               {t.work.engineering.map((item) => (
@@ -333,7 +351,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="product-showcase">
+          <div className="product-showcase" id="shoppilot-preview" aria-labelledby="shoppilot-preview-title">
+            <h4 className="preview-title" id="shoppilot-preview-title">{t.work.previewTitle}</h4>
+            <p className="preview-intro">{t.work.previewIntro}</p>
+            <div role="tabpanel" id="shoppilot-screen" aria-labelledby={`shoppilot-tab-${activeShot}`} tabIndex={0}>
             <div className="browser-frame">
               <div className="browser-bar" aria-hidden="true">
                 <span /><span /><span /><p>shoppilot / {selectedShot.label.toLowerCase()}</p>
@@ -348,15 +369,31 @@ export default function HomePage() {
                 priority
               />
             </div>
+            <p className="preview-caption">{selectedShot.caption}</p>
+            </div>
             <div className="shot-tabs" role="tablist" aria-label={t.work.screenshotsAria}>
               {t.shots.map((shot, index) => (
                 <button
                   key={shot.label}
                   type="button"
                   role="tab"
+                  id={`shoppilot-tab-${index}`}
                   aria-selected={activeShot === index}
+                  aria-controls="shoppilot-screen"
+                  tabIndex={activeShot === index ? 0 : -1}
                   className={activeShot === index ? "active" : ""}
                   onClick={() => setActiveShot(index)}
+                  onKeyDown={(event) => {
+                    let next = index;
+                    if (event.key === "ArrowRight") next = (index + 1) % t.shots.length;
+                    else if (event.key === "ArrowLeft") next = (index - 1 + t.shots.length) % t.shots.length;
+                    else if (event.key === "Home") next = 0;
+                    else if (event.key === "End") next = t.shots.length - 1;
+                    else return;
+                    event.preventDefault();
+                    setActiveShot(next);
+                    event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus();
+                  }}
                 >
                   <span>0{index + 1}</span>{shot.label}
                 </button>
@@ -369,7 +406,7 @@ export default function HomePage() {
           {supportingProjects.map((project, index) => {
             const copy = t.projects[index];
             return (
-            <article className={`project-card ${project.accent}`} key={copy.title}>
+            <article className={`project-card ${project.accent}`} id={project.id} key={project.id}>
               <div className="project-card-top">
                 <span>{project.number}</span>
                 <a href={project.href} target="_blank" rel="noreferrer" aria-label={t.work.viewGithub.replace("{title}", copy.title)}>
@@ -385,6 +422,11 @@ export default function HomePage() {
               <div className="tag-list">
                 {project.stack.map((item) => <span key={item}>{item}</span>)}
               </div>
+              {project.kind === "github" && (
+                <a className="project-source-link" href={project.href} target="_blank" rel="noreferrer">
+                  {t.work.source} <FiArrowUpRight aria-hidden="true" />
+                </a>
+              )}
             </article>
           )})}
         </div>
